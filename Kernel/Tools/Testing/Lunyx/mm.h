@@ -51,4 +51,11 @@ static inline unsigned long pageToPhys(struct page *page)
 #define pfnToPage(pfn) (void *)((pfn) * pageSize)
 #define nthPage(page, n) pfnToPage(pageToPfn((page)) + (n))
 
+#define __min(t1, t2, min1, min2, x, y) ({              \
+    t1 min1 = (x);                                  \
+    t2 min2 = (y);                                  \
+    (void) (&min1 == &min2);                        \
+    min1 < min2 ? min1 : min2;
+})
+
 #endif
