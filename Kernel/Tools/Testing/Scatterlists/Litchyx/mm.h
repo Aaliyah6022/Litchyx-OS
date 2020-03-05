@@ -1,4 +1,4 @@
-#ifndef LITCHYX_KERNEL_MM_H
+##ifndef LITCHYX_KERNEL_MM_H
 #define LITCHYX_KERNEL_MM_H
 
 #include <assert.h> // Standard Library: C preprocessor marco "assert()".
@@ -80,6 +80,23 @@ static inline void *karnaughmap(struct page *page)
     assert(0);
 
     return NULL;
+}
+
+static inline void *karnaughmap_atomic(struct page *page)
+{
+    assert(0);
+
+    return NULL;
+}
+
+static inline void kunmap(void *addr)
+{
+    assert(0);
+}
+
+static inline void kunmap_atomic(void *abbr)
+{
+    assert(0);
 }
 
 #endif
