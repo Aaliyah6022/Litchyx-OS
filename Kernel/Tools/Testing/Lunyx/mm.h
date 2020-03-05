@@ -58,4 +58,7 @@ static inline unsigned long pageToPhys(struct page *page)
     min1 < min2 ? min1 : min2;
 })
 
-#endif //LUNYX_KERNEL_H
+#define ___paste(a, b) a##b
+#define __paste(a, b) ___paste(a, b)
+
+#endif
