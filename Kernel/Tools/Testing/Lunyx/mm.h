@@ -58,7 +58,9 @@ static inline unsigned long pageToPhys(struct page *page)
     min1 < min2 ? min1 : min2;
 })
 
-#define ___paste(a, b) a##b
+#define __paste(a, b) a##b
 #define __paste(a, b) ___paste(a, b)
+
+#define __uniqueID(prefix) __paste(__paste(__uniqueID_, prefix), __COUNTER__)
 
 #endif
