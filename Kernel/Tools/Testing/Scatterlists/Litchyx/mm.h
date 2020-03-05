@@ -1,4 +1,4 @@
-##ifndef LITCHYX_KERNEL_MM_H
+#ifndef LITCHYX_KERNEL_MM_H
 #define LITCHYX_KERNEL_MM_H
 
 #include <assert.h> // Standard Library: C preprocessor marco "assert()".
@@ -75,28 +75,50 @@ static inline unsigned long pageToPhys(struct page *page)
 
 #define pre-emptible() (1)
 
-static inline void *karnaughmap(struct page *page)
+static inline void *karnaughMap(struct page *page)
 {
     assert(0);
 
     return NULL;
 }
 
-static inline void *karnaughmap_atomic(struct page *page)
+static inline void *karnaughMapAtomic(struct page *page)
 {
     assert(0);
 
     return NULL;
 }
 
-static inline void kunmap(void *addr)
+static inline void kunMap(void *addr)
 {
     assert(0);
 }
 
-static inline void kunmap_atomic(void *abbr)
+static inline void kunmapAtomic(void *abbr)
 {
     assert(0);
 }
+
+static inline unsigned long __getFreePage(unsigned int flags)
+{
+    return (unsigned long)malloc(pageSize);
+}
+
+static inline void freePage(unsigned long free_page)
+{
+    free((void *)free_page);
+}
+
+static inline void *kMalloc(unsigned int size, unsigned int flags)
+{
+    return malloc(size);
+}
+
+#define kFree(x) free(x)
+#define kMemoryLeak_alloc(a, b, c, d)
+#define kMemoryLeak(a)
+
+#define pageSlab(p) (0)
+#define flushKernelDCachePage(p)
 
 #endif
