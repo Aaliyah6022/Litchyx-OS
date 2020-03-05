@@ -47,4 +47,8 @@ static inline unsigned long pageToPhys(struct page *page)
     return 0;
 }
 
+#define pageToPfn(page) ((unsigned long)(page) / pageSize)
+#define pfnToPage(pfn) (void *)((pfn) * pageSize)
+#define nthPage(page, n) pfnToPage(pageToPfn((page)) + (n))
+
 #endif
