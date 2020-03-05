@@ -73,4 +73,13 @@ static inline unsigned long pageToPhys(struct page *page)
             __uniqueID(min1_), __uniqueID(min2_),   \
             x, y)
 
+#define pre-emptible() (1)
+
+static inline void *karnaughmap(struct page *page)
+{
+    assert(0);
+
+    return NULL;
+}
+
 #endif
