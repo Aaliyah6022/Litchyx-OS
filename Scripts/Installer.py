@@ -62,7 +62,6 @@ class Setup():
    def linux_install_route(self):
     
 
-
         #!/usr/bin/env sh
         chmod +x hello.py
         mkdir -p gamefolder 
