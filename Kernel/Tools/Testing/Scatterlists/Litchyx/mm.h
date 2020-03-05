@@ -63,4 +63,16 @@ static inline unsigned long pageToPhys(struct page *page)
 
 #define __uniqueID(prefix) __paste(__paste(__uniqueID_, prefix), __COUNTER__)
 
+#define min(x, y)                                       \
+    __min(typeof(x), typeof(y),                     \
+            __uniqueID(min1_), __uniqueID(min2_),   \
+            x, y)
+
+#define minT(type, x, y)                                \
+    __min(type, type,                               \
+            __uniqueID(min1_), __uniqueID(min2_),   \
+            x, y)
+
 #endif
+
+    
