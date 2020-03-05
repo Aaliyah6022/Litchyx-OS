@@ -10,5 +10,11 @@ The table below is the members of the LitchyxOS Development Team!
 | Main Developer | HTGAzureX1212. |
 | Graphics Designer | Blitzoko |
 
-# Roadmap
-// we should add here things we're planning
+License
+-------
+
+This code contain the next license: Litchyx_LICENSE
+This means you can use the code but not modify it
+
+
+
