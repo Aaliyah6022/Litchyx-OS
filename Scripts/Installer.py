@@ -33,11 +33,12 @@ class Setup():
             print('| MacOS Install Route                            []|')
             self.mac_osx_install_route()
         elif platform.system() == "Linux":
-            print('| Linux install route                            []|')
+            print('| Linux Install Route                            []|')
+            self.linux_install_route()
         elif platform.system() == "Windows":
-            print('| Windows install route                          []|')
+            print('| Windows Install Route                          []|')
         else:
-            print('| Default install route                          []|')
+            print('| Default Install Route                          []|')
             
         print("+------------------------------------------------------+")
 
@@ -57,6 +58,10 @@ class Setup():
         os.system("ln -s " + os.getcwd() + "/src/main.py /usr/local/bin/LunaLynx")
         print("| Create Symbolic Link to Script                        []|")
         #print(os.getcwd() + "/src/main.py")
+        
+   def linux_install_route(self):
+    
+        #linux code
 
 
 if __name__ == "__main__":
