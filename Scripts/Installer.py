@@ -37,7 +37,7 @@ class Setup():
         elif platform.system() == "Windows":
             print('| Windows install route                          []|')
         else:
-            print('| Default install route                             []|')
+            print('| Default install route                          []|')
             
         print("+------------------------------------------------------+")
 
