@@ -1,5 +1,5 @@
-#ifndef LUHANUX_KERNEL_MM_H
-#define LUHANUX_KERNEL_MM_H
+#ifndef LITCHYX_KERNEL_MM_H
+#define LITCHYX_KERNEL_MM_H
 
 #include <assert.h> // Standard Library: C preprocessor marco "assert()".
 #include <string.h> // Standard Library: Working with strings in C.
