@@ -74,5 +74,3 @@ static inline unsigned long pageToPhys(struct page *page)
             x, y)
 
 #endif
-
-   
