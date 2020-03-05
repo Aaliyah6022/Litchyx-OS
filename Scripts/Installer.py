@@ -13,12 +13,12 @@ class Setup():
     def __init__(self):
         
         print('+------------------------------------------------------+')
-        print('|           Installing Package - v1.0.0 alpha          |')
+        print('|           Package Installer - v1.0.0 alpha           |')
         print('|                 Made By Litchyx Team                 |')
         print('+------------------------------------------------------+')
         print("| Operating System : " + platform.system())
         print("| Release          : " + platform.release())
-        print("| Installer Version  : v1.0 alpha                     []|")
+        print("| Installer Version  : v1.0 alpha                    []|")
 
 
     def setup(self):
@@ -30,12 +30,12 @@ class Setup():
 
         # Check the platform and perform install for that platform
         if platform.system() == "Darwin":
-            print('| MacOS Install Route                               []|')
+            print('| MacOS Install Route                            []|')
             self.mac_osx_install_route()
         elif platform.system() == "Linux":
-            print('| Linux install route                               []|')
+            print('| Linux install route                            []|')
         elif platform.system() == "Windows":
-            print('| Windows install route                             []|')
+            print('| Windows install route                          []|')
         else:
             print('| Default install route                             []|')
             
