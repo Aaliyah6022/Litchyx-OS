@@ -54,7 +54,7 @@ class Setup():
         print("| Add Customised Directory to $PATH                     []|")
 
         # Create a symbolic link to the script
-        os.system("ln -s " + os.getcwd() + "/src/main.py /usr/local/bin/tachyon")
+        os.system("ln -s " + os.getcwd() + "/src/main.py /usr/local/bin/LunaLynx")
         print("| Create Symbolic Link to Script                        []|")
         #print(os.getcwd() + "/src/main.py")
 
