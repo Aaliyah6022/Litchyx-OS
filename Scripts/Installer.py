@@ -61,7 +61,14 @@ class Setup():
         
    def linux_install_route(self):
     
-        #linux code
+
+
+        #!/usr/bin/env sh
+        chmod +x hello.py
+        mkdir -p gamefolder 
+        # -p means if you run the script twice it wont complain the dir already exists
+        cd gamefolder
+        ../hello.py
 
 
 if __name__ == "__main__":
