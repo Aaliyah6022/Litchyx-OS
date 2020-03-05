@@ -26,4 +26,25 @@ typedef unsigned long dma_addr_t;
     unlikely(__ret_warn_on);                                \
 })
 
+#define pageSize    (4096)
+#define pageShift   (12)
+#define pageMask    (~(pageSize - 1))
+
+#define _alignKernel(x, a)        _alignKernelMask(x, (typeof(x))(a) - 1)
+#define _alignKernelMask(x, mask)    (((x) + (mask)) & ~(mask))
+#define align(x, a)        _alignKernel((x), (a))
+
+#define pageAlign(addr) align(addr, pageSize)
+
+#define pageOffset(p)    ((unsigned long)(p) & ~pageMask)
+
+#define virtToPage(x) ((void *)x)
+#define pageAddress(x) ((void *)x)
+
+static inline unsigned long pageToPhys(struct page *page)
+{
+    assert(0);
+    return 0;
+}
+
 #endif
