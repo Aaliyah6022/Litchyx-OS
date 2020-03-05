@@ -1,2 +1,2 @@
-# HanyxOS
-The “BraveHeart” first edition of HanyxOS are aimed solely for developer and early adopters
+# LitchyxOS
+The “BraveHeart” first edition of LitchyxOS are aimed solely for developer and early adopters
