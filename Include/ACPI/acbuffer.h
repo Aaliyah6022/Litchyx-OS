@@ -54,7 +54,7 @@ struct acpi_pld_info
     u8 groupPosition;
     u8 bay;
     u8 eject_able;
-    u8 ospmObjevctRequired;
+    u8 ospmObjectRequired;
     u8 cabinetNumber;
     u8 cardCageNumber;
     u8 reference;
@@ -90,4 +90,3 @@ struct acpi_pld_info
 #define ACPI_PLD_GET_BLUE(dword, value)         ACPI_GET_BITS (dword, 24, ACPI_16BIT_MASK, value)
 
 #endif
-
