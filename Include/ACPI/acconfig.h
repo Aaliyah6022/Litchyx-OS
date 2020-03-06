@@ -51,7 +51,7 @@
 #define ACPI_DEFAULT_PAGE_SIZE           4
 #define ACPI_NUM_OWNERID_MASKS           128
 #define ACPI_ROOT_TABLE_SIZE_INCREMENT   4
-#define ACPI_MAX_SLEEP                   4000 // 400 milliseconds == 4 seconds 
+#define ACPI_MAX_SLEEP                   4000 // 4000 milliseconds == 4 seconds 
 #define ACPI_ADDRESS_RANGE_MAX           2
 #define ACPI_MAX_LOOP_TIMEOUT            30
 
