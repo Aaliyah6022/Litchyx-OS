@@ -188,8 +188,31 @@ static const struct acpi_exception_info ACPI_GBL_EXCEPTION_NAMES_ENV[] = {
         EXCEPT_TXT("_TYPE", "The object type is incorrect."),
         EXCEPT_TXT("_NULL_OBJ", "A required object is missing."),
         EXCEPT_TXT("_NULL_ENTRY", "The requested object does not exist."),
-        EXCEPT_TXT("_BUFFER_OVERFLOW", "The buffer provided is too small.")
+        EXCEPT_TXT("_BUFFER_OVERFLOW", "The buffer provided is too small."),
+        EXCEPT_TXT("_STACK_OVERFLOW", "An internal stack overflowed."),
+        EXCEPT_TXT("_STACK_UNDERFLOW", "An internal stack underflowed."),
+        EXCEPT_TXT("_NOT_IMPLEMENTED", "The feature is not implemented."),
+        EXCEPT_TXT("_SUPPORT", "The feature is unsupported."),
+        EXCEPT_TXT("_LIMIT", "A predefined limit was exceeded."),
+        EXCEPT_TXT("_TIME", " A time limit or timeout expired."),
+        EXCEPT_TXT("_ACQUIRE_DEADLOCK", "Internal error: an attempt was made to acquire a mutex in the improper order."),
+        EXCEPT_TXT("_RELEASE_DEADLOCK", "Internal error: an attempt was made to release a mutex in the improper order."),
+        EXCEPT_TXT("_NOT_ACQUIRED", "An attempt to release a mutex or Global Lock without a previos acquire."),
+        EXCEPT_TXT("_ALREADY_ACQUIRED", "Internal error: an attempt was made to acquire a mutex twice."),
+        EXCEPT_TXT("_HARDWARE_NO_RESPONSE", "The hardware did not response after an I/O operation."),
+        EXCEPT_TXT("_NO_GLOBAL_LOCK", "There is no FACS Global Lock."),
+        EXCEPT_TXT("_ABORT_METHOD", "A control method was aborted."),
+        EXCEPT_TXT("_SAME_HANDLER", "Attempt made to install a handler that is already installed."),
+        EEXCEPT_TXT("_NO_HANDLER", "A handler for the operation is not installed/missing."),
+        EXCEPT_TXT("_OWNER_ID_LIMIT", "There are no more Owner IDs available for ACPI tables or control methods."),
+        EXCEPT_TXT("_NOT_CONFIGURED", "The interface is not part of the current subsystem configuration."),
+        EXCEPT_TXT("_ACCESS", "Permission is denied for the requested operation."),
+        EXCEPT_TXT("_IO_ERROR", "An I/O error occured."),
+        EXCEPT_TXT("_NUMERIC_OVERFLOW", "An overflow occured during string-to-integer conversion."),
+        EXCEPT_TXT("_HEX_OVERFLOW", "An ovrrflow occured during an ASCII hex-to-binary converstion."),
+        EXCEPT_TXT("_DECIMAL_OVERFLOW", "An overflow occured during an ASCII decimal-to-binary coversion."),
+        EXCEPT_TXT("_OCTAL_OVERFLOW", "An overflow occured during ASCII octal-to-binary conversion."),
+        EXCEPT_TXT("_END_OF_TBL", "The end of the table has been reached.")
 };
 
 #endif
-
