@@ -88,7 +88,7 @@ struct acpi_exception_info
 #define _ACCESS                          EXCEPT_ENV(0x001D)
 #define _IO_ERROR                        EXCEPT_ENV(0x001E)
 #define _NUMERIC_OVERFLOW                EXCEPT_ENV(0x001F)
-#defome _HEX_OVERFLOW                    EXCEPT_ENV(0x0020)
+#define _HEX_OVERFLOW                    EXCEPT_ENV(0x0020)
 #define _DECIMAL_OVERFLOW                EXCEPT_ENV(0x0021)
 #define _OCTAL_OVERFLOW                  EXCEPT_ENV(0x0022)
 #define _END_OF_TBL                      EXCEPT_ENV(0x0023)
