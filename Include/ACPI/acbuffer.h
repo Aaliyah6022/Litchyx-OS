@@ -134,5 +134,28 @@ struct acpi_pld_info
 #define ACPI_PLD_GET_BAY(dword)                      ACPI_GET_BITS(dword, 31, ACPI_1BIT_MASK)
 #define ACPI_PLD_SET_BAY(dword, value)               ACPI_SET_BITS(dword, 31, ACPI_1BIT_MASK, value)
 
+/* Fourth 32-bit dword, bits 96:127 */
+
+#define ACPI_PLD_GET_EJECTABLE(dword)                ACPI_GET_BITS(dword, 0, ACPI_1BIT_MASK)
+#define ACPI_PLD_SET_EJECTABLE(dword, value)         ACPI_SET_BITS(dword, 0, ACPI_1BIT_MASK, value)
+
+#define ACPI_PLD_GET_OPSM_EJECT(dword)               ACPI_GET_BITS(dword, 1, ACPI_1BIT_MASK)
+#define ACPI_PLD_SET_OPSM_EJECT(dword, value)        ACPI_SET_BITS(dword, 1, ACPI_1BIT_MASK, value)
+
+#define ACPI_PLD_GET_CABINET(dword)                  ACPI_GET_BITS(dword, 2, ACPI_8BIT_MASK)
+#define ACPI_PLD_SET_CABINET(dword, value)           ACPI_SET_BITS(dword, 2, ACPI_8BIT_MASK, value)
+
+#define ACPI_PLD_GET_CARD_CAGE(dword)                ACPI_GET_BITS(dword, 10, ACPI_8BIT_MASK)
+#define ACPI_PLD_SET_CARD_CAGE(dword, value)         ACPI_SET_BITS(dword, 10, ACPI_8BIT_MASK, value)
+
+#define ACPI_PLD_GET_REFERENCE(dword)                ACPI_GET_BITS(dword, 18, ACPI_1BIT_MASK)
+#define ACPI_PLD_SET_REFERENCE(dword, value)         ACPI_SET_BITS(dword, 18, ACPI_1BIT_MASK, value)
+
+#define ACPI_PLD_GET_ROTATION(dword)                 ACPI_GET_BITS(dword, 19, ACPI_4BIT_MASK)
+#define ACPI_PLD_SET_ROTATION(dword, value)          ACPI_SET_BITS(dword, 19, ACPI_4BIT_MASK, value)
+
+#define ACPI_PLD_GET_ORDER(dword)                    ACPI_GET_BITS(dword, 23, ACPI_5BIT_MASK)
+#define ACPI_PLD_SET_ORDER(dword, value)             ACPI_SET_BITS(dword, 23, ACPI_5BIT_MASK, value)
+
 #endif
 
