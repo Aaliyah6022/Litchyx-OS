@@ -276,5 +276,23 @@ static const struct acpi_exception_info ACPI_GBL_EXCEPTION_NAMES_AML[] = {
         EXCEPT_TXT("_AML_BUFFER_LENGTH", "The length of the buffer is invalid or incorrect.")
 };
 
+static const struct acpi_exception_info ACPI_GBL_EXCEPTION_NAMES_CTRL[] = {
+        EXCEPT_TXT(NULL, NULL),
+        EXCEPT_TXT("_CTRL_RETURN_VALUE", "A method returned a value."),
+        EXCEPT_TXT("_CTRL_PENDING", "A method is calling another method."),
+        EXCEPT_TXT("_CTRL_TERMINATE", "Terminating the executing method."),
+        EXCEPT_TXT("_CTRL_TRUE", "An If or While predicate result."),
+        EXCEPT_TXT("_CTRL_FALSE", "An If or While predicate result."),
+        EXCEPT_TXT("_CTRL_DEPTH", "Maximum search depth has been reached."),
+        EXCEPT_TXT("_CTRL_END", "An If or While predicate is false."),
+        EXCEPT_TXT("_CTRL_TRANSFER", "Transfer control to a called method."),
+        EXCEPT_TXT("_CTRL_BREAK", "A Break has been executed."),
+        EXCEPT_TXT("_CTRL_CONTINUE", "A Continue has been executed."),
+        EXCEPT_TXT("_CTRL_PARSE_CONTINUE", "Used to skip over bad operation codes."),
+        EXCEPT_TXT("_CTRL_PARSE_PENDING", "Used to implement AML While loops.")
+};
+
+#endif
+
 #endif
 
