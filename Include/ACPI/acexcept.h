@@ -174,5 +174,22 @@ struct acpi_exception_info
 
 #define _MAX_CTRL_CODE                   0x000C
 
+#ifdef ACPI_DEFINE_EXCEPT_TABLE
+
+static const struct acpi_exception_info ACPI_GBL_EXCEPTION_NAMES_ENV[] = {
+        EXCEPT_TXT("_OK", "No errors."),
+        EXCEPT_TXT("_ERROR", "Unspecified error."),
+        EXCEPT_TXT("_NO_ACPI_TABLES", "ACPI tables could not be found."),
+        EXCEPT_TXT("_NO_NAMESPACE", "A namespace has not been loaded."),
+        EXCEPT_TXT("_NO_MEMORY", "Insufficient dynamuc memory."),
+        EXCEPT_TXT("_NOT_FOUND", "A requested entity is not found."),
+        EXCEPT_TXT("_NOT_EXIST", "A required entity does not exist."),
+        EXCEPT_TXT("_ALREADY_EXIST", "An entity already exists."),
+        EXCEPT_TXT("_TYPE", "The object type is incorrect."),
+        EXCEPT_TXT("_NULL_OBJ", "A required object is missing."),
+        EXCEPT_TXT("_NULL_ENTRY", "The requested object does not exist."),
+        EXCEPT_TXT("_BUFFER_OVERFLOW", "The buffer provided is too small.")
+};
+
 #endif
 
