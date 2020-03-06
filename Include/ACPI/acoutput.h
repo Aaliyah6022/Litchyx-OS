@@ -34,6 +34,9 @@
 #define ACPI_COMPONENT_DEFAULT  (ACPI_ALL_COMPONENTS)
 
 // Component IDs reserved for ACPI drivers.
+#define ACPI_ALL_DRIVERS        0xFFFF0000
+
+// Raw debug output levels, do not use these in the ACPI_DEBUG_PRINT marcos.
 #define ACPI_LV_INIT            0x00000001
 #define ACPI_LV_DEBUG_OBJ       0x00000002
 #define ACPI_LV_INFO            0x00000004
