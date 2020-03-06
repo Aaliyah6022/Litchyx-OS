@@ -35,7 +35,7 @@ struct acpi_exception_info
 
 #ifdef ACDI_HELP_APP
     char *description
-#endif    
+#endif
 };
 
 #ifdef ACPI_HELP_APP
@@ -47,6 +47,14 @@ struct acpi_exception_info
 /* Success is ALWAYS 0, failure is non-zero. */
 #define ACPI_SUCCESS(a)                  (!(a))
 #define ACPI_FAILURE(a)                  (a)
- 
+
+#define _OK                              (acpi_status) 0x0000
+
+#define ACPI_ENV_EXCEPT(status)          (status & _CODE_ENVIRONMENTAL)
+#define ACPI_PROG_EXCEPT(status)         (status & _CODE_PROGRAMMER)
+#define ACPI_TBL_EXCEPT(status)          (status & _CODE_ACPI_TABLES)
+#define ACPI_AML_EXCEPT(status)          (sattus & _CODE_AML)
+#define ACPI_CTRL_EXCEPT(status)         (status & _CODE_CONTROL)
+
 #endif
 
