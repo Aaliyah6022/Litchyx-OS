@@ -73,5 +73,39 @@
 #define ACPI_HI_RSDP_WINDOW_SIZE         0x00020000
 #define ACPI_RSDO_SCAN_STEP              16
 
+#define ACPI_USER_REGION_BEGIN           0x80
+
+#define ACPI_MAX_ADDRESS_SPACE           255
+#define ACPI_NUM_DEFAULT_SPACES          4
+
+#define ACPI_MAX_MATCH_OPCODE            5
+
+#define ACPI_RSDP_CHECKSUM_LENGTH        20
+#define ACPI_RSDP_XCHECKSUM_LENGTH       36
+
+#define ACPI_SERIAL_HEADER_SIZE          2
+
+#define ACPI_SMBUS_DATA_SIZE             32
+#define ACPI_SMBUS_BUFFER_SIZE           ACPI_SERIAL_HEADER_SIZE + ACPI_SMBUS_DATA_SIZE
+
+#define ACPI_NUM_SX_D_METHODS            4
+#define ACPI_NUM_SX_W_METHODS            5
+
+/* Miscellaneous constants */
+#define UUID_BUFFER_LENGTH               16 // Length of UUID inside the memory
+#define UUID_STRING_LENGTH               36 // Total length of a UUID string
+
+#define UUID_HYPHEN1_OFFSET              8
+#define UUID_HYPHEN2_OFFSET              13
+#define UUID_HYPHEN3_OFFSET              18
+#define UUID_HYPHEN4_OFFSET              23
+
+/* ACPI AML Debugger */
+#define ACPI_DEBUGGER_MAX_ARGS           ACPI_METHOD_NUM_ARGS + 4 // Maximum command line arguments
+#define ACPI_DB_LINE_BUFFER_SIZE         512
+
+#define ACPI_DEBUGGER_COMMAND_PROMPT     'cd'
+#define ACPI_DEBUGGER_EXECUTE_PROMPT     '%'
+
 #endif
 
