@@ -236,5 +236,45 @@ static const struct acpi_exception_info ACPI_GBL_EXCEPTION_NAMES_TBL[] = {
         EXCEPT_TXT("_INVALID_TBL_LENGTH", "The FADT or FACS table has an improper length.")
 };
 
+static const struct acpi_exception_info ACPI_GBL_EXCEPTION_NAMES_AML[] = {
+        EXCEPT_TXT(NULL, NULL),
+        EXCEPT_TXT("_AML_BAD_OPCODE", "An invalid AML operation code is enconutered."),
+        EXCEPT_TXT("_AML_NO_OPERAND", "A required operand is missing."),
+        EXCEPT_TXT("_AML_OPERAND_TYPE", "An operand of the incorrect type is encountered."),
+        EXCEPT_TXT("_AML_OPERAND_VALUE", "An operand has an inappropriate or invalid value."),
+        EXCEPT_TXT("_AML_UNINIT_LOCAL", "A method tried to use an uninitialized local value."),
+        EXCEPT_TXT("_AML_UNINIT_ARG", "A method tried to use an uninitialized local variable or argument."),
+        EXCEPT_TXT("_AML_UNINIT_ELEMENT", "A method tried to use an empty package element."),
+        EXCEPT_TXT("_AML_NUMERIC_OVERFLOW", "An overflow occured during a BCD conversion or other."),
+        EXCEPT_TXT("_AML_REGION_LIMIT", "A trial to access beyond the end of an operation region."),
+        EXCEPT_TXT("_AML_BUFFER_LIMIT", "A trial to access beyond the end of a buffer."),
+        EXCEPT_TXT("_AML_PACKAGE_LIMIT", "A trial to access beyond the end of a package."),
+        EXCEPT_TXT("_AML_ZERO_DIVISION", "During execution of AML division operator."),
+        EXCEPT_TXT("_AML_BAD_NAME", "An ACPI name contains invalid character(s)."),
+        EXCEPT_TXT("_AML_NAME_NOT_FOUND", "Could not resolve a named reference."),
+        EXCEPT_TXT("_AML_INTERNAL", "An internal error occured in the interpreter."),
+        EXCEPT_TXT("_AML_INVALID_SPACE_ID", "The operation Space ID is invalid."),
+        EXCEPT_TXT("_AML_STRING_LIMIT", "A given string is longer than 200 characters."),
+        EXCEPT_TXT("_AML_NO_RETURN_VALUE", "A method did not return a required value."),
+        EXCEPT_TXT("_AML_METHOD_LIMIT", "A control method reached the maximum reentrancy of 255."),
+        EXCEPT_TXT("_AML_NOT_OWNER", "A thread tried to release a mutex that it does not own."),
+        EXCEPT_TXT("_AML_MUTEX_ORDER", "The Mutex Sync Order release is mismatched."),
+        EXCEPT_TXT("_AML_MUTEX_NOT_ACQUIRED", "An attemp to release a mutex that was not previously acquired."),
+        EXCEPT_TXT("_AML_INVALID_RESOURCE_TYPE", "An invalid resource type os found in the resource list."),
+        EXCEPT_TXT("_AML_INVALID_INDEX", "An invalid arg(x) or local (x) is found, which x is too large."),
+        EXCEPT_TXT("_AML_NO_WHILE", "Break or Continue without a while is encountered."),
+        EXCEPT_TXT("_AML_ALIGNMENT", "A non-aligned memory transfer on platform that doesn't support this is encountered."),
+        EXCEPT_TXT("_AML_NO_RESOURCE_END_TAG", "The end tag is not found in a resource list."),
+        EXCEPT_TXT("_AML_BAD_RESOURCE_VALUE", "A invalid value of a resource element is found."),
+        EXCEPT_TXT("_AML_CIRCULAR_REFERENCE", "Two references refer to each other."),
+        EXCEPT_TXT("_AML_BAD_RESOURCE_LENGTH", "The length of a Resource Description in the AML is incorrect."),
+        EXCEPT_TXT("_AML_ILLEGAL_ADDRESS", "A memory, I/O or PCI configuration address is invalid."),
+        EXCEPT_TXT("_AML_LOOP_TIMEOUT", "An AML while loop exceeded the maximum execution time."),
+        EXCEPT_TXT("_AML_UNINIT_NODE", "A namespace mpde os uninitialized or unresolved."),
+        EXCEPT_TXT("_AML_TARGET_TYPE", "The target operand of an incorrect type is encountered."),
+        EXCEPT_TXT("_AML_PROTOCOL", "Violation of a fixed ACPI protocol is detected."),
+        EXCEPT_TXT("_AML_BUFFER_LENGTH", "The length of the buffer is invalid or incorrect.")
+};
+
 #endif
 
