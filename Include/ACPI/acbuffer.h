@@ -1,4 +1,4 @@
-#/* LitchyxOS/Include/ACPI/acbuffer.h */
+/* LitchyxOS/Include/ACPI/acbuffer.h */
 /*****************************************************************************
  * 
  * Name: acbuffer.h - Support for buffers returned by ACPI redefined names
