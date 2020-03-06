@@ -56,5 +56,24 @@ struct acpi_exception_info
 #define ACPI_AML_EXCEPT(status)          (sattus & _CODE_AML)
 #define ACPI_CTRL_EXCEPT(status)         (status & _CODE_CONTROL)
 
+/* Environmental Exceptions */
+#define _ERROR                           EXCEPT_ENV(0x0001)
+#define _NO_ACPI_TABLES                  EXCEPT_ENV(0x0002)
+#define _NO_NAMESPACE                    EXCEPT_ENV(0x0003)
+#define _NO_MEMORY                       EXCEPT_ENV(0x0004)
+#define _NOT_FOUND                       EXCEPT_ENV(0x0005)
+#define _NOT_EXIST                       EXCEPT_ENV(0x0006)
+#define _ALREADY_EXIST                   EXCEPT_ENV(0x0007)
+#define _TYPE                            EXCEPT_ENV(0x0008)
+#define _NULL_OBJ                        EXCEPT_ENV(0x0009)
+#define _NULL_ENTRY                      EXCEPT_ENV(0x000A)
+#define _BUFFER_OVERFLOW                 EXCEPT_ENV(0x000B)
+#define _STACK_OVERFLOW                  EXCEPT_ENV(0x000C)
+#define _STACK_UNDERFLOW                 EXCEPT_ENV(0x000D)
+#define _NOT_IMPLEMENTED                 EXCEPT_ENV(0x000D)
+#define _SUPPORT                         EXCEPT_ENV(0x000E)
+#define _LIMIT                           EXCEPT_ENV(0x000F)
+#define _TIME                            EXCEPT_ENV(0x0010)
+
 #endif
 
