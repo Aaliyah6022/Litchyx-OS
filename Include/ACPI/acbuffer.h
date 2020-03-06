@@ -74,19 +74,29 @@ struct acpi_pld_info
  */
 #define ACPI_PLD_BUFFER_SIZE 20
 
+/* First 32-bit dword, bots 0:32 */
+
 #define ACPI_PLD_GET_REVISION(dword)                ACPI_GET_BITS (dword, 0, ACPI_7BIT_MASK)
 #define ACPI_PLD_GET_REVISION(dword, value)         ACPI_GET_BITS (dword, 0, ACPI_7BIT_MASK, value)
 
-#define ACPI_PLD_GET_IGNORE_COLOUR(dword)                ACPI_GET_BITS (dword, 7, ACPI_1BIT_MASK)
-#define ACPI_PLD_GET_IGNORE_COLOUR(dword, value)         ACPI_GET_BITS (dword, 7, ACPI_1BIT_MASK, value)
+#define ACPI_PLD_GET_IGNORE_COLOUR(dword)           ACPI_GET_BITS (dword, 7, ACPI_1BIT_MASK)
+#define ACPI_PLD_GET_IGNORE_COLOUR(dword, value)    ACPI_GET_BITS (dword, 7, ACPI_1BIT_MASK, value)
 
-#define ACPI_PLD_GET_RED(dword)                ACPI_GET_BITS (dword, 8, ACPI_8BIT_MASK)
-#define ACPI_PLD_GET_RED(dword, value)         ACPI_GET_BITS (dword, 8, ACPI_8BIT_MASK, value)
+#define ACPI_PLD_GET_RED(dword)                     ACPI_GET_BITS (dword, 8, ACPI_8BIT_MASK)
+#define ACPI_PLD_GET_RED(dword, value)              ACPI_GET_BITS (dword, 8, ACPI_8BIT_MASK, value)
 
-#define ACPI_PLD_GET_GREEN(dword)                ACPI_GET_BITS (dword, 16, ACPI_8BIT_MASK)
-#define ACPI_PLD_GET_GREEN(dword, value)         ACPI_GET_BITS (dword, 16, ACPI_8BIT_MASK, value)
+#define ACPI_PLD_GET_GREEN(dword)                   ACPI_GET_BITS (dword, 16, ACPI_8BIT_MASK)
+#define ACPI_PLD_GET_GREEN(dword, value)            ACPI_GET_BITS (dword, 16, ACPI_8BIT_MASK, value)
 
-#define ACPI_PLD_GET_BLUE(dword)                ACPI_GET_BITS (dword, 24, ACPI_16BIT_MASK)
-#define ACPI_PLD_GET_BLUE(dword, value)         ACPI_GET_BITS (dword, 24, ACPI_16BIT_MASK, value)
+#define ACPI_PLD_GET_BLUE(dword)                    ACPI_GET_BITS (dword, 24, ACPI_16BIT_MASK)
+#define ACPI_PLD_GET_BLUE(dword, value)             ACPI_GET_BITS (dword, 24, ACPI_16BIT_MASK, value)
+
+/* Second 32-bit, bits 33:63 */
+
+#define ACPI_PLD_GET_WIDTH(dword)                   ACPI_GET_BITS (dword, 0, ACPI_16BIT_MASK)
+#define ACPI_PLD_GET_WIDTH(dword, value)            ACPI_GET_BITS (dword, 0, ACPI_16BIT_MASK, value)
+
+#define ACPI_PLD_GET_HEIGHT(dword)                  ACPI_GET_BITS (dword, 16, ACPI_16BIT_MASK)
+#define ACPI_PLD_GET_HEIGHT(dword, value)           ACPI_GET_BITS (dword, 16, ACPI_16BIT_MASK, value)
 
 #endif
