@@ -31,7 +31,7 @@
  * to generate a specialized version of ACPICA that ONLY supports the
  * ACPI 5.0 "reduced hardware" model. In other words, no ACPI hardware
  * is going to be supported.
- * 
+ *
  * If this value is set to TRUE, the followings are no longer supported:
  *     PM event and Control registers;
  *     SCI interrupt and handler;
@@ -40,7 +40,7 @@
  *     Global Lock;
  *     ACPI PM timer;
  *     FACS table*/
-#ifndef ACPI_REDUCED_HARDWARE             
+#ifndef ACPI_REDUCED_HARDWARE
 #define ACPI_REDUCED_HARDWARE            FALSE
 #endif
 
@@ -51,9 +51,27 @@
 #define ACPI_DEFAULT_PAGE_SIZE           4
 #define ACPI_NUM_OWNERID_MASKS           128
 #define ACPI_ROOT_TABLE_SIZE_INCREMENT   4
-#define ACPI_MAX_SLEEP                   4000 // 4000 milliseconds == 4 seconds 
+#define ACPI_MAX_SLEEP                   4000 // 400 milliseconds == 4 seconds
 #define ACPI_ADDRESS_RANGE_MAX           2
 #define ACPI_MAX_LOOP_TIMEOUT            30
+
+/* ACPI specification constants */
+#define ACPI_METHOD_NUM_LOCALS           8
+#define ACPI_METHOD_MAX_LOCALS           7
+#define ACPI_METHOD_NUM_ARGS             7
+#define ACPI_METHOD_MAX_ARGS             6
+
+#define ACPI_OBJ_NUM_OPERANDS            8
+#define ACPI_OBJ_MAX_OPERANDS            7
+
+#define ACPI_RESULTS_FRAME_OBJ_NUM       8
+
+#define ACPI_EBDA_PTR_LOCATION           0x0000040E // This is an actual, physical address.
+#define ACPI_EBDA_PTR_LENGTH             2
+#define ACPI_EBDA_WINDOW_SIZE            1024
+#define ACPI_HI_RSDP_WINDOW_BASE         0x000E0000 // This is an actual, physical address.
+#define ACPI_HI_RSDP_WINDOW_SIZE         0x00020000
+#define ACPI_RSDO_SCAN_STEP              16
 
 #endif
 
