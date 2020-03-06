@@ -1,8 +1,6 @@
 /* LitchyxOS/Include/ACPI/acconfig.h */
 /*******************************************************
  *
- * Made by: Litchyx Team
- *
  * Name: acconfig.h - Global configuration constants.
  *
  *******************************************************/
