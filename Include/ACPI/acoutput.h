@@ -70,5 +70,22 @@
 #define ACPI_LV_VERBOSITY2      0x00F00000 | ACPI_LV_VERBOSITY1
 #define ACPI_LV_ALL             ACPI_LV_VERBOSITY2
 
+// Trace verbosity level 3 [Threading, IO and Interrupts]
+#define ACPI_MUTEX              0x01000000
+#define ACPI_LV_THREADS         0x02000000
+#define ACPI_LV_IO              0x04000000
+#define ACPI_LV_INTERRUPT       0x08000000
+#define ACPI_LV_VERBOSITY       0x0F000000 | ACPI_LV_VERBOSITY2
+
+// Exceptionally verbose output -- also used in the global "DebugLevel"
+#define ACPI_LV_AML_DISASSEMBLE 0x10000000
+#define ACPI_LV_VERBOSE_INFO    0x20000000
+#define ACPI_LV_FULL_TBL        0x40000000
+#define ACPI_LV_EVENTS          0x80000000
+#define ACPI_LV_VERBOSE         0xF0000000
+
+// Debug level marcos that are used in the DEBUG_PRINT marcos
+#define ACPI_DEBUG_LEVEL(dl)    (u32) dl, ACPI_DEBUG_PARAMETERS
+
 #endif
 
