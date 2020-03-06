@@ -1,3 +1,10 @@
+#/* LitchyxOS/Include/ACPI/acbuffer.h */
+/*****************************************************************************
+ * 
+ * Name: acbuffer.h - Support for buffers returned by ACPI redefined names
+ * 
+ *****************************************************************************/
+
 #ifndef __ACBUFFER_H__
 #define __ACBUFFER_H__
 
