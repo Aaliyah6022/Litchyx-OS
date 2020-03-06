@@ -122,5 +122,17 @@ struct acpi_pld_info
 #define ACPI_PLD_GET_SHAPE(dword)                    ACPI_GET_BITS(dword, 10, ACPI_4BIT_MASK)
 #define ACPI_PLD_SET_SHAPE(dword, value)             ACPI_SET_BITS(dword, 10, ACPI_4BIT_MASK, value)
 
+#define ACPI_PLD_GET_ORIENTATION(dword)              ACPI_GET_BITS(dword, 14, ACPI_1BIT_MASK)
+#define ACPI_PLD_SET_ORIENTATION(dword, value)       ACPI_SET_BITS(dword, 14, ACPI_1BIT_MASK, value)
+
+#define ACPI_PLD_GET_TOKEN(dword)                    ACPI_GET_BITS(dword, 15, ACPI_8BIT_MASK)
+#define ACPI_PLD_SET_TOKEN(dword, value)             ACPI_SET_BITS(dword, 15, ACPI_8BIT_MASK, value)
+
+#define ACPI_PLD_GET_POSITION(dword)                 ACPI_GET_BITS(dword, 23, ACPI_8BIT_MASK)
+#define ACPI_PLD_SET_POSITION(dword, value)          ACPI_SET_BITS(dword, 23, ACPI_8BIT_MASK, value)
+
+#define ACPI_PLD_GET_BAY(dword)                      ACPI_GET_BITS(dword, 31, ACPI_1BIT_MASK)
+#define ACPI_PLD_SET_BAY(dword, value)               ACPI_SET_BITS(dword, 31, ACPI_1BIT_MASK, value)
+
 #endif
 
