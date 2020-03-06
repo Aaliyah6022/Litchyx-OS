@@ -1,7 +1,5 @@
 /* LitchyxOS/Include/ACPI/acbuffer.h */
 /*****************************************************************************
- *
- * Made by: Litchyx Team
  * 
  * Name: acbuffer.h - Support for buffers returned by ACPI redefined names
  *
