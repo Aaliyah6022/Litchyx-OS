@@ -63,11 +63,11 @@ class Setup():
     
 
         #!/usr/bin/env sh
-        chmod +x hello.py
-        mkdir -p gamefolder 
+        chmod +x main.py
+        mkdir -p unnamedfolder 
         # -p means if you run the script twice it wont complain the dir already exists
-        cd gamefolder
-        ../hello.py
+        cd unnamedfolder
+        ../main.py
 
 
 if __name__ == "__main__":
