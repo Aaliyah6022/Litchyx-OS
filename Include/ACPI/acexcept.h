@@ -228,5 +228,13 @@ static const struct acpi_exception_info ACPI_GBL_EXCEPTION_NAMES_PGM[] = {
         EXCEPT_TXT("_BAD_ADDRESS", "An illegal null I/O address is found."),
 };
 
+static const struct acpi_exception_info ACPI_GBL_EXCEPTION_NAMES_TBL[] = {
+        EXCEPT_TXT("_BAD_SIGNATURE", "An ACPI table has an invalid signature."),
+        EXCEPT_TXT("_BAD_HEADER", "Invalid field in an ACPI table header."),
+        EXCEPT_TXT("_BAD_CHECKSUM", "The checksum of an ACPI table is incorrect."),
+        EXCEPT_TXT("_BAD_VALUE", "An invalid value is found in an ACPI table."),
+        EXCEPT_TXT("_INVALID_TBL_LENGTH", "The FADT or FACS table has an improper length.")
+};
+
 #endif
 
