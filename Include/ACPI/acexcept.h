@@ -108,5 +108,12 @@ struct acpi_exception_info
 
 #define _MAX_PGM_CODE                    0x0009
 
+/* ACPI Table Exceptions */
+#define _BAD_SIGNATURE                   EXCEPT_TBL(0x0001)
+#define _BAD_HEADER                      EXCEPT_TBL(0x0002)
+#define _BAD_CHECKSUM                    EXCEPT_TBL(0x0003)
+#define _BAD_VALUE                       EXCEPT_TBL(0x0004)
+#define _INVALID_TBL_LENGTH              EXCEPT_TBL(0x0005)
+ 
 #endif
 
