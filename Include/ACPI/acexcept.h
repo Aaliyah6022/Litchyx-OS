@@ -114,6 +114,64 @@ struct acpi_exception_info
 #define _BAD_CHECKSUM                    EXCEPT_TBL(0x0003)
 #define _BAD_VALUE                       EXCEPT_TBL(0x0004)
 #define _INVALID_TBL_LENGTH              EXCEPT_TBL(0x0005)
- 
+
+#define _MAX_TBL_CODE                    0x0005
+
+/* AML Exceptions */
+#define _AML_BAD_OPCODE                  EXCEPT_AML(0x0001)
+#define _AML_NO_OPERAND                  EXCEPT_AML(0x0002)
+#define _AML_OPERAND_TYPE                EXCEPT_AML(0x0003)
+#define _AML_OPERAND_VALUE               EXCEPT_AML(0x0004)
+#define _AML_UNINIT_LOCAL                EXCEPT_AML(0x0005)
+#define _AML_UNINIT_ARG                  EXCEPT_AML(0x0006)
+#define _AML_UNINIT_ELEMENT              EXCEPT_AML(0x0007)
+#define _AML_NUMERIC_OVERFLOW            EXCEPT_AML(0x0008)
+#define _AML_REGION_LIMIT                EXCEPT_AML(0x0009)
+#define _AML_BUFFER_LIMIT                EXCEPT_AML(0x000A)
+#define _AML_PACKAGE_LIMIT               EXCEPT_AML(0x000B)
+#define _AML_ZERO_DIVISION               EXCEPT_AML(0x000C)
+#define _AML_BAD_NAME                    EXCEPT_AML(0x000D)
+#define _AML_NAME_NOT_FOUND              EXCEPT_AML(0x000E)
+#define _AML_INTERNAL                    EXCEPT_AML(0x000F)
+#define _AML_INVALID_SPACE_ID            EXCEPT_AML(0x0010)
+#define _AML_STRING_LIMIT                EXCEPT_AML(0x0011)
+#define _AML_NO_RETURN_VALUE             EXCEPT_AML(0x0012)
+#define _AML_METHOD_LIMIT                EXCEPT_AML(0x0013)
+#define _AML_NOT_OWNER                   EXCEPT_AML(0x0014)
+#define _AML_MUTEX_ORDER                 EXCEPT_AML(0x0015)
+#define _AML_MUTEX_NOT_ACQUIRED          EXCEPT_AML(0X0016)
+#define _AML_INVALID_RESOURCE_TYPE       EXCEPT_AML(0x0017)
+#define _AML_INVALID_INDEX               EXCEPT_AML(0x0018)
+#define _AML_REGISTER_LIMIT              EXCEPT_AML(0x0019)
+#define _AML_NO_WHILE                    EXCEPT_AML(0x001A)
+#define _AML_ALIGNMENT                   EXCEPT_AML(0x001B)
+#define _AML_NO_RESOURCE_END_TAG         EXCEPT_AML(0x001C)
+#define _AML_BAD_RESOURCE_VALUE          EXCEPT_AML(0x001D)
+#define _AML_CIRCULAR_REFERENCE          EXCEPT_AML(0x001E)
+#define _AML_BAD_RESOURCE_LENGTH         EXCEPT_AML(0x001F)
+#define _AML_ILLEGAL_ADDRESS             EXCEPT_AML(0x0020)
+#define _AML_LOOP_TIMEOUT                EXCEPT_AML(0x0021)
+#define _AML_UNINIT_NODE                 EXCEPT_AML(0x0022)
+#define _AML_TARGET_TYPE                 EXCEPT_AML(0x0023)
+#define _AML_PROTOCOL                    EXCEPT_AML(0x0024)
+#define _AML_BUFFER_LENGTH               EXCEPT_AML(0x0025)
+
+#define _MAX_AML_CODE                    0x0025
+
+/* Internal Exceptions */
+#define _CTRL_RETURN_VALUE               EXCEPT_CTL(0x0001)
+#define _CTRL_PENDING                    EXCEPT_CTL(0x0002)
+#define _CTRL_TERMINATE                  EXCEPT_CTL(0x0003)
+#define _CTRL_TRUE                       EXCEPT_CTL(0x0004)
+#define _CTRL_FALSE                      EXCEPT_CTL(0x0005)
+#define _CTRL_DEPTH                      EXCEPT_CTL(0x0006)
+#define _CTRL_END                        EXCEPT_CTL(0x0007)
+#define _CTRL_TRANSFER                   EXCEPT_CTL(0x0008)
+#define _CTRL_BREAK                      EXCEPT_CTL(0x0009)
+#define _CTRL_CONTINUE                   EXCEPT_CTL(0x000A)
+#define _CTRL_PARSE_CONTINUE             EXCEPT_CTL(0x000B)
+#define _CTRL_PARSE_PENDING              EXCEPT_CTL(0x000C)
+#define _MAX_CTRL_CODE                   0x000C
+
 #endif
 
