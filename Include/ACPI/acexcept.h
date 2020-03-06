@@ -95,5 +95,18 @@ struct acpi_exception_info
 
 #define _MAX_ENV_CODE                    0x0023
 
+/* Programmer Exceptions */
+#define _BAD_PARAM                       EXCEPT_PGM(0x0001)
+#define _BAD_CHAR                        EXCEPT_PGM(0x0002)
+#define _BAD_PATH_NAME                   EXCEPT_PGM(0x0003)
+#define _BAD_DATA                        EXCEPT_PGM(0x0004)
+#define _BAD_HEX_CONST                   EXCEPT_PGM(0x0005)
+#define _BAD_DECIMAL_CONST               EXCEPT_PGM(0x0006)
+#define _BAD_OCTAL_CONST                 EXCEPT_PGM(0x0007)
+#define _MISSING_ARGS                    EXCEPT_PGM(0x0008)
+#define _BAD_ADDRESS                     EXCEPT_PGM(0x0009)
+
+#define _MAX_PGM_CODE                    0x0009
+
 #endif
 
