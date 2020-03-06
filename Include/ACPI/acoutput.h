@@ -44,5 +44,23 @@
 #define ACPI_LV_TRACE_POINT     0x00000010
 #define ACPI_LV_ALL_EXCEPTS     0x0000001F
 
+// Trace verbosity Level 1 [Standard Trace Level]
+#define ACPI_LV_INIT_NAMES      0x00000020
+#define ACPI_LV_PARSE           0x00000040
+#define ACPI_LV_LOAD            0x00000080
+#define ACPI_LV_DISPATCH        0x00000100
+#define ACPI_LV_EXEC            0x00000200
+#define ACPI_LV_NAMES           0x00000400
+#define ACPI_LV_OP_REGION       0x00000800
+#define ACPI_LV_BFIELD          0x00001000
+#define ACPI_LV_TABLES          0x00002000
+#define ACPI_LV_VALUES          0x00004000
+#define ACPI_LV_OBJ             0x00008000
+#define ACPI_LV_RES             0x00010000
+#define ACPI_LV_USER_REQ        0x00020000
+#define ACPI_LV_PACKAGE         0x00040000
+#define ACPI_LV_EVALUATE        0x00080000
+#define ACPI_LV_VERBOSITY1      0x000FFF40 | ACPI_LV_ALL_EXCEPTS
+
 #endif
 
