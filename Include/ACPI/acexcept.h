@@ -171,6 +171,7 @@ struct acpi_exception_info
 #define _CTRL_CONTINUE                   EXCEPT_CTL(0x000A)
 #define _CTRL_PARSE_CONTINUE             EXCEPT_CTL(0x000B)
 #define _CTRL_PARSE_PENDING              EXCEPT_CTL(0x000C)
+
 #define _MAX_CTRL_CODE                   0x000C
 
 #endif
