@@ -62,7 +62,7 @@ struct acpi_pld_info
     u8 order;
     u8 reserved;
     u8 verticalOffset;
-    u8 horizontalOffset
+    u8 horizontalOffset;
 };
 
 /*
@@ -154,8 +154,13 @@ struct acpi_pld_info
 #define ACPI_PLD_GET_ROTATION(dword)                 ACPI_GET_BITS(dword, 19, ACPI_4BIT_MASK)
 #define ACPI_PLD_SET_ROTATION(dword, value)          ACPI_SET_BITS(dword, 19, ACPI_4BIT_MASK, value)
 
-#define ACPI_PLD_GET_ORDER(dword)                    ACPI_GET_BITS(dword, 23, ACPI_5BIT_MASK)
-#define ACPI_PLD_SET_ORDER(dword, value)             ACPI_SET_BITS(dword, 23, ACPI_5BIT_MASK, value)
+/* Fifth 32-bit dword, bits 128:159 */
+
+#define ACPI_PLD_GET_VERT_OFFSET(dword)              ACPI_GET_BITS(dword, 0, ACPI_16BIT_MASK)
+#define ACPI_PLD_SET_VERT_OFFSET(dword, value)       ACPI_SET_BITS(dword, 0, ACPI_16BIT_MASK, value)
+
+#define ACPI_PLD_GET_HORIZ_OFFSET(dword)             ACPI_GET_BITS(dword, 16, ACPI_16BIT_MASK)
+#define ACPI_PLD_SET_HORIZ_OFFSET(dword, value)      ACPI_SET_BITS(dword, 16, ACPI_16BIT_MASK, value)
 
 #endif
 
