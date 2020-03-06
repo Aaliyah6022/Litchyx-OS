@@ -215,4 +215,18 @@ static const struct acpi_exception_info ACPI_GBL_EXCEPTION_NAMES_ENV[] = {
         EXCEPT_TXT("_END_OF_TBL", "The end of the table has been reached.")
 };
 
+static const struct acpi_exception_info ACPI_GBL_EXCEPTION_NAMES_PGM[] = {
+        EXCEPT_TXT(NULL, NULL),
+        EXCEPT_TXT("_BAD_PARAM", "The parameter given is out of range or invalid."),
+        EXCEPT_TXT("_BAD_CHAR", "An invalid character is found in a name."),
+        EXCEPT_TXT("_BAD_PATH_NAME", "An invalid character is found in a path name."),
+        EXCEPT_TXT("_BAD_DATA", "A package or buffer contains incorrect data."),
+        EXCEPT_TXT("_BAD_HEX_CONST", "An invalid character is found in a hexadecimal constant."),
+        EXCEPT_TXT("_BAD_DECIMAL_CONST", "An invalid character is found in a decimal constant."),
+        EXCEPT_TXT("_BAD_OCTAL_CONST", "An invalid character is found in a octal constant."),
+        EXCEPT_TXT("_MISSING_ARGS", "Too few arguments are passed to a control method."),
+        EXCEPT_TXT("_BAD_ADDRESS", "An illegal null I/O address is found."),
+};
+
 #endif
+
