@@ -1,4 +1,4 @@
-/* LitchyxOS/Include/ACPI/acexcept.h */
+/* LitchyxOS/Include/ACPI/acnames.h */
 /**************************************************************************************
  *
  * Name: acnames.h - Global names and strings.
