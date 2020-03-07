@@ -629,3 +629,326 @@ union acpiObj {
 	} powerResource;
 };
 
+/* List of objs */
+
+struct acpi_object_list {
+	u32 count;
+	union acpiObj *pointer;
+};
+
+/* Misc common data structures used by the interfaces*/
+
+#define ACPI_NO_BUFFER              0
+
+#ifdef ACPI_NO_MEM_ALLOCATIONS
+
+#define ACPI_ALLOCATE_BUFFER        (acpiSize) (0)
+#define ACPI_ALLOCATE_LOCAL_BUFFER  (acpiSize) (0)
+
+#else
+
+#define ACPI_ALLOCATE_BUFFER        (acpiSize) (-1)
+#define ACPI_ALLOCATE_LOCAL_BUFFER  acpiSize) (-2)
+
+#endif
+
+struct acpi_buffer {
+	acpi_size length;
+	void *pointer;
+};
+
+/* Name_type for getName */
+
+#define ACPI_FULL_PATHNAME              0
+#define ACPI_SINGLE_NAME                1
+#define ACPI_FULL_PATHNAME_NO_TRAILING  2
+#define ACPI_NAME_TYPE_MAX              2
+
+/* Predefined Namespace items */
+
+struct acpi_predefined_names {
+	const char *name;
+	u8 type;
+	char *val;
+};
+
+/* Structure and flags for getting system info. */
+
+#define ACPI_SYS_MODE_UNKNOWN           0x0000
+#define ACPI_SYS_MODE_ACPI              0x0001
+#define ACPI_SYS_MODE_LEGACY            0x0002
+#define ACPI_SYS_MODES_MASK             0x0003
+
+/* System info returned from getting system info. */
+
+struct acpi_system_info {
+	u32 acpi_ca_version;
+	u32 flags;
+	u32 timer_resolution;
+	u32 reserved1;
+	u32 reserved2;
+	u32 debug_level;
+	u32 debug_layer;
+};
+
+/* System statistics returned by get_system_statistics */
+
+struct acpi_statistics {
+	u32 sci_count;
+	u32 gpe_count;
+	u32 fixed_event_count[ACPI_NUM_FIXED_EVENTS];
+	u32 method_count;
+};
+
+/* Type specific to the OS service interfaces */
+
+ typedef u32
+ (ACPI_SYSTEM_XFACE * acpi_osd_handler) (void *context);
+
+typedef void
+ (ACPI_SYSTEM_XFACE * acpi_osd_exec_callback) (void *context);
+
+/* Various handler and callback procedures. */
+
+typedef
+u32 (*acpi_sci_handler) (void *context);
+
+typedef
+void (*acpi_gbl_event_handler) (u32 event_type,
+			       acpi_handle device,
+			       u32 event_number, void *context);
+
+#define ACPI_EVENT_TYPE_GPE         0
+#define ACPI_EVENT_TYPE_FIXED       1
+
+typedef
+u32(*acpi_event_handler) (void *context);
+
+typedef
+u32 (*acpi_gpe_handler) (acpi_handle gpe_device, u32 gpe_number, void *context);
+
+typedef
+void (*acpi_notify_handler) (acpi_handle device, u32 value, void *context);
+
+typedef
+void (*acpi_object_handler) (acpi_handle object, void *data);
+
+typedef
+acpi_status (*acpi_init_handler) (acpi_handle object, u32 function);
+
+#define ACPI_INIT_DEVICE_INI        1
+
+typedef
+acpi_status (*acpi_exception_handler) (acpi_status aml_status,
+				       acpi_name name,
+				       u16 opcode,
+				       u32 aml_offset, void *context);
+
+/* Table event handling */
+
+#define ACPI_TABLE_EVENT_LOAD           0x0
+#define ACPI_TABLE_EVENT_UNLOAD         0x1
+#define ACPI_TABLE_EVENT_INSTALL        0x2
+#define ACPI_TABLE_EVENT_UNINSTALL      0x3
+#define ACPI_NUM_TABLE_EVENTS           4
+
+/* Address spaces again... */
+
+typedef
+acpi_status (*acpi_adr_space_handler) (u32 function,
+				       acpiPhysAddress address,
+				       u32 bit_width,
+				       u64 *value,
+				       void *handler_context,
+				       void *region_context);
+
+#define ACPI_DEFAULT_HANDLER            NULL
+
+/* Special ctx data for generic serial bus or general purpose io. */
+
+struct acpi_connection_info {
+	u8 *connection;
+	u16 length;
+	u8 access_length;
+};
+
+typedef
+acpi_status (*acpi_adr_space_setup) (acpi_handle region_handle,
+				     u32 function,
+				     void *handler_context,
+				     void **region_context);
+
+#define ACPI_REGION_ACTIVATE    0
+#define ACPI_REGION_DEACTIVATE  1
+
+typedef
+acpi_status (*acpi_walk_callback) (acpi_handle object,
+				   u32 nesting_level,
+				   void *context, void **return_value);
+
+typedef
+u32 (*acpi_interface_handler) (acpi_string interface_name, u32 supported);
+
+/* Interrupt handling */
+
+#define ACPI_INTERRUPT_NOT_HANDLED      0x00
+#define ACPI_INTERRUPT_HANDLED          0x01
+
+/* GPE handling */
+
+#define ACPI_REENABLE_GPE               0x80
+
+/* Length of 32-bit EISAID values */
+
+#define ACPI_EISAID_STRING_SIZE         8
+
+/* Length of UUID (string) values */
+
+#define ACPI_UUID_LENGTH                16
+
+/* Length of 3-byte PCI class code values when converted back to a string */
+
+#define ACPI_PCICLS_STRING_SIZE         7
+
+/* Structures used for device/processor HID, UID, CID */
+
+struct acpi_pnp_device_id {
+	u32 length;
+	char *string;
+};
+
+struct acpi_pnp_device_id_list {
+	u32 count;
+	u32 list_size;
+	struct acpi_pnp_device_id ids[1];
+};
+
+/*
+ * Structure returned from acpi_get_object_info.
+ * Optimized for both 32-bit and 64-bit builds.
+ */
+struct acpi_device_info {
+	u32 info_size;
+	u32 name;
+	acpi_object_type type;
+	u8 param_count;
+	u16 valid;
+	u8 flags;
+	u8 highest_dstates[4];
+	u8 lowest_dstates[5];
+	u64 address;
+	struct acpi_pnp_device_id hardware_id;
+	struct acpi_pnp_device_id unique_id;
+	struct acpi_pnp_device_id class_code;
+	struct acpi_pnp_device_id_list compatible_id_list;
+};
+
+/* Values for Flags field above (acpi_get_object_info) */
+
+#define ACPI_PCI_ROOT_BRIDGE            0x01
+
+/* Flags for Valid field above (acpi_get_object_info) */
+
+#define ACPI_VALID_ADR                  0x0002
+#define ACPI_VALID_HID                  0x0004
+#define ACPI_VALID_UID                  0x0008
+#define ACPI_VALID_CID                  0x0020
+#define ACPI_VALID_CLS                  0x0040
+#define ACPI_VALID_SXDS                 0x0100
+#define ACPI_VALID_SXWS                 0x0200
+
+/* Flags for _STA method */
+
+#define ACPI_STA_DEVICE_PRESENT         0x01
+#define ACPI_STA_DEVICE_ENABLED         0x02
+#define ACPI_STA_DEVICE_UI              0x04
+#define ACPI_STA_DEVICE_FUNCTIONING     0x08
+#define ACPI_STA_DEVICE_OK              0x08
+#define ACPI_STA_BATTERY_PRESENT        0x10
+
+/* Context structs for address space handlers */
+
+struct acpi_pci_id {
+	u16 segment;
+	u16 bus;
+	u16 device;
+	u16 function;
+};
+
+struct acpi_mem_space_context {
+	u32 length;
+	acpi_physical_address address;
+	acpi_physical_address mapped_physical_address;
+	u8 *mapped_logical_address;
+	acpi_size mapped_length;
+};
+
+/* struct acpimemorylist is used only if the acpica local cache is enabled. */
+
+struct acpi_memory_list {
+	const char *list_name;
+	void *list_head;
+	u16 object_size;
+	u16 max_depth;
+	u16 current_depth;
+
+#ifdef ACPI_DBG_TRACK_ALLOCATIONS
+	u32 total_allocated;
+	u32 total_freed;
+	u32 max_occupied;
+	u32 total_size;
+	u32 current_total_size;
+	u32 requests;
+	u32 hits;
+#endif
+};
+
+/* Definitions of trace event types */
+
+typedef enum {
+	ACPI_TRACE_AML_METHOD,
+	ACPI_TRACE_AML_OPCODE,
+	ACPI_TRACE_AML_REGION
+} acpi_trace_event_type;
+
+/* Definitions of _OSI support */
+
+#define ACPI_VENDOR_STRINGS                 0x01
+#define ACPI_FEATURE_STRINGS                0x02
+#define ACPI_ENABLE_INTERFACES              0x00
+#define ACPI_DISABLE_INTERFACES             0x04
+
+#define ACPI_DISABLE_ALL_VENDOR_STRINGS     (ACPI_DISABLE_INTERFACES | ACPI_VENDOR_STRINGS)
+#define ACPI_DISABLE_ALL_FEATURE_STRINGS    (ACPI_DISABLE_INTERFACES | ACPI_FEATURE_STRINGS)
+#define ACPI_DISABLE_ALL_STRINGS            (ACPI_DISABLE_INTERFACES | ACPI_VENDOR_STRINGS | ACPI_FEATURE_STRINGS)
+#define ACPI_ENABLE_ALL_VENDOR_STRINGS      (ACPI_ENABLE_INTERFACES | ACPI_VENDOR_STRINGS)
+#define ACPI_ENABLE_ALL_FEATURE_STRINGS     (ACPI_ENABLE_INTERFACES | ACPI_FEATURE_STRINGS)
+#define ACPI_ENABLE_ALL_STRINGS             (ACPI_ENABLE_INTERFACES | ACPI_VENDOR_STRINGS | ACPI_FEATURE_STRINGS)
+
+#define ACPI_OSI_WIN_2000               0x01
+#define ACPI_OSI_WIN_XP                 0x02
+#define ACPI_OSI_WIN_XP_SP1             0x03
+#define ACPI_OSI_WINSRV_2003            0x04
+#define ACPI_OSI_WIN_XP_SP2             0x05
+#define ACPI_OSI_WINSRV_2003_SP1        0x06
+#define ACPI_OSI_WIN_VISTA              0x07
+#define ACPI_OSI_WINSRV_2008            0x08
+#define ACPI_OSI_WIN_VISTA_SP1          0x09
+#define ACPI_OSI_WIN_VISTA_SP2          0x0A
+#define ACPI_OSI_WIN_7                  0x0B
+#define ACPI_OSI_WIN_8                  0x0C
+#define ACPI_OSI_WIN_8_1                0x0D
+#define ACPI_OSI_WIN_10                 0x0E
+#define ACPI_OSI_WIN_10_RS1             0x0F
+#define ACPI_OSI_WIN_10_RS2             0x10
+#define ACPI_OSI_WIN_10_RS3             0x11
+#define ACPI_OSI_WIN_10_RS4             0x12
+#define ACPI_OSI_WIN_10_RS5             0x13
+#define ACPI_OSI_WIN_10_19H1            0x14
+
+/* Definitions of getopt */
+
+#define ACPI_OPT_END                    -1
+
+#endif
+
