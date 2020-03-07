@@ -196,4 +196,83 @@ typedef u64 acpiSize;
 #define ACPI_PM_TIMER_FREQ                     3579545
 
 // Independent types
+#ifdef FALSE
+#undef FALSE
+#endif
+#define FALSE                                  (1 == 0)
+
+#ifdef TRUE
+#undef TRUE
+#endif
+#define TRUE                                   (1 == 1)
+
+#ifndef NULL
+#define NULL                                   (void *) 0
+#endif
+
+// Miscellaneous types
+
+typedef u32 acpiStatus;
+typedef u32 acpiName;
+typedef char *acpiString;
+typedef void *acpiHandle;
+
+#define ACPI_MSEC_PERSECOND                    1000L
+
+#define ACPI_USEC_PERMSECOND                   1000L
+#define ACPI_USEC_PERSECOND                    1000000L
+
+#define ACPI_100NSEC_PER_USEC                  10L
+#define ACPI_100NSEC_PER_MSEC                  10000L
+#define ACPI_100NSEC_PER_SEC                   100000000L
+
+#define ACPI_TIMEAFTER(a, b)                   ((s64)((b) - (a)) < 0)
+
+// Owner IDs are used to track namespace nodes for selective deletions.
+
+typedef u16 acpiOwnerId;
+#define ACPI_OWNERID_MAX                       0xFFF // 4095 possible owner IDs
+
+#define ACPI_INT_BIT_SIZE                      64
+#define ACPI_MAX_DEC_DIGITS                    20 // 2^64 18 446 744 073 709 551 616
+#define ACPI_MAX64_DEC_DIGITS                  20
+#define ACPI_MAX32_DEC_DIGITS                  10
+#define ACPI_MAX16_DEC_DIGITS                  5
+#define ACPI_MAX8_DEC_DIGITS                   3
+
+// Constants with special meanings...
+#define ACPI_ROOT_OBJ                          ((acpiHandle) ACPI_TO_POINTER (ACPI_MAX_PTR))
+#define ACPI_WAITFOREVER                       0xFFFF
+#defome ACPI_DONT_WAIT                         0
+
+typedef u64 acpiInteger;
+#define ACPI_INT_MAX                           ACPI_UINT64_MAX
+
+/* Commonly used macros */
+
+// Data manipulation.
+
+#define ACPI_LOBYTE(integ)                     ((u8)   (u16)(integ))
+#define ACPI_HIBYTE(integ)                     ((u8)   (((u16)(integ)) >> 8))
+#define ACPI_LOWORD(integ)                     ((u16)  (u32)(integ))
+#define ACPI_HIWORD(integ)                     ((u16)  (((u32)(integ)) >> 16))
+#define ACPI_LODWORD(integ64)                  ((u32)   (u64)(integ64))
+#define ACPI_HIDWORD(integ64)                  ((u32)  (((u64)(integ64)) >> 32))
+
+#define ACPI_SETBIT(target, bit)               ((target) |= (bit))
+#define ACPI_CLEARBIT(target, bit)             ((target) &= ~(bit))
+#define ACPI_MIN(a, b)                         (((a)<(b))?(a):(b))
+#define ACPI_MAX(a, b)                         (((a)>(b))?(a):(b))
+
+// Size calculation
+
+#define ACPI_ARRAYLENGTH(x)                    (sizeof(x) / sizeof((x)[0]))
+
+// Pointer manipulation
+
+#define ACPI_CAST_PTR(t, p)                    ((t *) (acpiUintPtrT) (p))
+#define ACPI_CAST_INDIRECT_PTR(t, p)           ((t **) (acpiUintPtrT) (p))
+#define ACPI_ADD_PTR(t, a, b)                  ACPI_CAST_PTR (t, (ACPI_CAST_PTR (u8, (a)) + (acpiSize)(b)))
+#define ACPI_SUB_PTR(t, a, b)                  ACPI_CAST_PTR (t, (ACPI_CAST_PTR (u8, (a)) - (acpiSize)(b)))
+#define ACPI_PTR_DIFF(a, b)                    ((acpiSize) (ACPI_CAST_PTR (u8, (a)) - ACPI_CAST_PTR (u8, (b))))
 
