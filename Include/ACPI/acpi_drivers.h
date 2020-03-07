@@ -1,4 +1,4 @@
-/* LitchyxOS/Include/ACPI/acpi.h */
+/* LitchyxOS/Include/ACPI/acpi_drivers.h */
 /**************************************************************************
  *
  * Name: acpi.h - Master public include file used to interface ACPICA
