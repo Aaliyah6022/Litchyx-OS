@@ -173,3 +173,27 @@ typedef u64 acpiSize;
 
 #endif
 
+// ACPI Specification Constants
+
+#define ACPI_MAX_GPE_BLOCKS                    2
+
+#define ACPI_GPE_REGIST_WIDTH                  8
+#define ACPI_PM1_REGIST_WIDTH                  16
+#define ACPI_PM2_REGIST_WIDTH                  8
+#define ACPI_PM_TIMER_WIDTH                    32
+#define ACPI_RESET_REGIST_WIDTH                8
+
+#define ACPI_NAMESEG_SIZE                      4
+#define ACPI_PATHSEGMENT_LENGTH                5
+#define ACPI_PATH_SEPARATOR                    '.'
+
+#define ACPI_OEM_ID_SIZE                       6
+#define ACPI_OEM_TBL_IF_SIZE                   8
+
+#define PCI_ROOTHID_STRING                     "PNP0A03"
+#define PCI_EXPRESS_ROOTHID_STRING             "PNP0A08"
+
+#define ACPI_PM_TIMER_FREQ                     3579545
+
+// Independent types
+
