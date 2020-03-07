@@ -297,5 +297,50 @@
 
 // Conditional executions
 
+#define ACPI_DEBUG_EXEC(a)       a
+#define ACPI_DBG_ONLY_MEMBERS(a) a;
+#define _VERBOSE_STRUCTURES
+
+// Various object display routines for debugging
+
+#define ACPI_DUMPSTACK_ENTRY(a)        acpi_ex_dumpoperand((a), 0)
+#define ACPI_DUMPOPERANDS(a, b, c)     acpi_ex_dumpoperands(a, b, c)
+#define ACPI_DUMPENTRY(a, b)           acpi_dumpentry(a, b)
+#define ACPI_DUMPPATHNAME(a, b, c, d)  acpi_dumppathname(a, b, c, d)
+#define ACPI_DUMPBUFFER(a, b)          acpi_dumpbuffer(a, b)
+
+#define ACPI_TRACEPOINT(a, b, c, d)    acpi_tracepoint(a, b, c, d)
+
+#else
+// This is the nondebug case.
+#define ACPI_DBG_PRINT(pl)
+#define ACPI_DBG_PRINTRAW(pl)
+#define ACPI_DEBUG_EXEC(a)
+#define ACPI_DBG_ONLY_MEMBERS(a)
+#define ACPI_FUNCTION_NAME(a)
+#define ACPI_FUNC_TRACE(a)
+#define ACPI_FUNC_TRACE_PTR(a, b)
+#define ACPI_FUNC_TRACE_U32(a, b)
+#define ACPI_FUNC_TRACE_STR(a, b)
+#define ACPI_FUNC_ENTRY()
+#define ACPI_DUMPSTACK_ENTRY(a) 
+#define ACPI_DUMPOPERANDS(a, b, c)  
+#define ACPI_DUMPENTRY(a, b)
+#define ACPI_DUMPPATHNAME(a, b, c, d)
+#define ACPI_DUMPBUFFER(a, b)
+#define ACPI_IS_DEBUG_ENABLED(level, component)        0
+#define ACPI_TRACEPOINT(a, b, c, d)
+
+// Return macros MUST have a return statement.
+#define RETURN_VOID                            return
+#define RETURN_ACPI_STATUS(s)                  return(s)
+#define RETURN_PTR(s)                          return(s)
+#define RETURN_STR(s)                          return(s)
+#define RETURN_VALUE(s)                        return(s)
+#define RETURN_UINT32(s)                       return(s)
+#define RETURN_UINT8(s)                        return(s)
+ 
+#endif
+
 #endif
 
