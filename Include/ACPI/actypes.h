@@ -276,3 +276,110 @@ typedef u64 acpiInteger;
 #define ACPI_SUB_PTR(t, a, b)                  ACPI_CAST_PTR (t, (ACPI_CAST_PTR (u8, (a)) - (acpiSize)(b)))
 #define ACPI_PTR_DIFF(a, b)                    ((acpiSize) (ACPI_CAST_PTR (u8, (a)) - ACPI_CAST_PTR (u8, (b))))
 
+// Pointer <-> Integer conversions
+
+#define ACPI_TO_POINTER(i)              ACPI_CAST_PTR (void, (acpiSize) (i))
+#define ACPI_TO_INTEGER(p)              ACPI_PTR_DIFF (p, (void *) 0)
+#define ACPI_OFFSET(d, f)               ACPI_PTR_DIFF (&(((d *) 0)->f), (void *) 0)
+#define ACPI_PHYSADDR_TO_PTR(i)         ACPI_TO_POINTER(i)
+#define ACPI_PTR_TO_PHYSADDR(i)         ACPI_TO_INTEGER(i)
+
+// Optimization for 4-char (32bit) acpiName manipulation
+
+#ifndef ACPI_MISALIGNMENT_NOT_SUPPORTED
+#define ACPI_COMPARE_NAMESEG(a,b)       (*ACPI_CAST_PTR (u32, (a)) == *ACPI_CAST_PTR (u32, (b)))
+#define ACPI_COPY_NAMESEG(dest,src)     (*ACPI_CAST_PTR (u32, (dest)) = *ACPI_CAST_PTR (u32, (src)))
+#else
+#define ACPI_COMPARE_NAMESEG(a,b)       (!strncmp (ACPI_CAST_PTR (char, (a)), ACPI_CAST_PTR (char, (b)), ACPI_NAMESEG_SIZE))
+#define ACPI_COPY_NAMESEG(dest,src)     (strncpy (ACPI_CAST_PTR (char, (dest)), ACPI_CAST_PTR (char, (src)), ACPI_NAMESEG_SIZE))
+#endif
+
+// Support for the very special RSDP signature
+#define ACPI_VALIDATE_RSDP_SIG(a)       (!strncmp (ACPI_CAST_PTR (char, (a)), ACPI_SIG_RSDP, 8))
+#define ACPI_MAKE_RSDP_SIG(dest)        (memcpy (ACPI_CAST_PTR (char, (dest)), ACPI_SIG_RSDP, 8))
+
+// Support for the OEMx signature
+
+#define ACPI_IS_OEM_SIG(a)        (!strncmp (ACPI_CAST_PTR (char, (a)), ACPI_OEM_NAME, 3) &&\
+        strnlen (a, ACPI_NAMESEG_SIZE) == ACPI_NAMESEG_SIZE)
+
+// Algorithm to obtain access the bit or byte width.
+
+#define ACPI_ACCESS_BIT_WIDTH(size)     (1 << ((size) + 2))
+#define ACPI_ACCESS_BYTE_WIDTH(size)    (1 << ((size) - 1))
+
+/* Some more miscellaneous constants */
+
+// Initialization of sequences
+
+#define ACPI_FULL_INITIALIZATION        0x0000
+#define ACPI_NO_FACS_INIT               0x0001
+#define ACPI_NO_ACPI_ENABLE             0x0002
+#define ACPI_NO_HARDWARE_INIT           0x0004
+#define ACPI_NO_EVENT_INIT              0x0008
+#define ACPI_NO_HANDLER_INIT            0x0010
+#define ACPI_NO_OBJECT_INIT             0x0020
+#define ACPI_NO_DEVICE_INIT             0x0040
+#define ACPI_NO_ADDRESS_SPACE_INIT      0x0080
+
+// Initialization states
+
+#define ACPI_SUBSYSTEM_INITIALIZE       0x01
+#define ACPI_INITIALIZED_OK             0x02
+
+// Power states
+
+#define ACPI_STATE_UNKNOWN              (u8) 0xFF
+
+#define ACPI_STATE_S0                   (u8) 0
+#define ACPI_STATE_S1                   (u8) 1
+#define ACPI_STATE_S2                   (u8) 2
+#define ACPI_STATE_S3                   (u8) 3
+#define ACPI_STATE_S4                   (u8) 4
+#define ACPI_STATE_S5                   (u8) 5
+#define ACPI_S_STATES_MAX               ACPI_STATE_S5
+#define ACPI_S_STATE_COUNT              6
+
+#define ACPI_STATE_D0                   (u8) 0
+#define ACPI_STATE_D1                   (u8) 1
+#define ACPI_STATE_D2                   (u8) 2
+#define ACPI_STATE_D3_HOT               (u8) 3
+#define ACPI_STATE_D3                   (u8) 4
+#define ACPI_STATE_D3_COLD              ACPI_STATE_D3
+#define ACPI_D_STATES_MAX               ACPI_STATE_D3
+#define ACPI_D_STATE_COUNT              5
+
+#define ACPI_STATE_C0                   (u8) 0
+#define ACPI_STATE_C1                   (u8) 1
+#define ACPI_STATE_C2                   (u8) 2
+#define ACPI_STATE_C3                   (u8) 3
+#define ACPI_C_STATES_MAX               ACPI_STATE_C3
+#define ACPI_C_STATE_COUNT              4
+
+// Sleep type invalid values
+
+#define ACPI_SLEEP_TYPE_MAX             0x7
+#define ACPI_SLEEP_TYPE_INVALID         0xFF
+
+// Standard notifications
+
+#define ACPI_NOTIFY_BUS_CHECK           (u8) 0x00
+#define ACPI_NOTIFY_DEVICE_CHECK        (u8) 0x01
+#define ACPI_NOTIFY_DEVICE_WAKE         (u8) 0x02
+#define ACPI_NOTIFY_EJECT_REQUEST       (u8) 0x03
+#define ACPI_NOTIFY_DEVICE_CHECK_LIGHT  (u8) 0x04
+#define ACPI_NOTIFY_FREQUENCY_MISMATCH  (u8) 0x05
+#define ACPI_NOTIFY_BUS_MODE_MISMATCH   (u8) 0x06
+#define ACPI_NOTIFY_POWER_FAULT         (u8) 0x07
+#define ACPI_NOTIFY_CAPABILITIES_CHECK  (u8) 0x08
+#define ACPI_NOTIFY_DEVICE_PLD_CHECK    (u8) 0x09
+#define ACPI_NOTIFY_RESERVED            (u8) 0x0A
+#define ACPI_NOTIFY_LOCALITY_UPDATE     (u8) 0x0B
+#define ACPI_NOTIFY_SHUTDOWN_REQUEST    (u8) 0x0C
+#define ACPI_NOTIFY_AFFINITY_UPDATE     (u8) 0x0D
+#define ACPI_NOTIFY_MEMORY_UPDATE       (u8) 0x0E
+#define ACPI_NOTIFY_DISCONNECT_RECOVER  (u8) 0x0F
+
+#define ACPI_GENERIC_NOTIFY_MAX         0x0F
+#define ACPI_SPECIFIC_NOTIFY_MAX        0x84
+
