@@ -146,3 +146,15 @@ typedef u64 acpiSize;
 
 // Configuration
 
+#ifdef ACPI_NO_MEM_ALLOCATIONS
+#define acpiAllocate(a)                        NULL
+#define acpiAllocateZero(a)                    NULL
+#define acpiFree(a)
+#define acpiMemoryTracking(a)
+
+#else
+
+#ifdef ACPI_DBG_TRACK_ALLOCATIONS
+
+#define ACPI_MEM_PARAMS                        _COMPONENT, _acpi_module_name, __LINE__
+
