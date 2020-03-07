@@ -1,5 +1,15 @@
 
 /***************************************************************************//**
+       ██▓   ▓██   ██▓▄▄▄█████▓ ▄████▄   ██░ ██▓██   ██▓▒██   ██▒    ▒█████    ██████ 
+      ▓██▒    ▒██  ██▒▓  ██▒ ▓▒▒██▀ ▀█  ▓██░ ██▒▒██  ██▒▒▒ █ █ ▒░   ▒██▒  ██▒▒██    ▒ 
+      ▒██░     ▒██ ██░▒ ▓██░ ▒░▒▓█    ▄ ▒██▀▀██░ ▒██ ██░░░  █   ░   ▒██░  ██▒░ ▓██▄   
+      ▒██░     ░ ▐██▓░░ ▓██▓ ░ ▒▓▓▄ ▄██▒░▓█ ░██  ░ ▐██▓░ ░ █ █ ▒    ▒██   ██░  ▒   ██▒
+      ░██████▒ ░ ██▒▓░  ▒██▒ ░ ▒ ▓███▀ ░░▓█▒░██▓ ░ ██▒▓░▒██▒ ▒██▒   ░ ████▓▒░▒██████▒▒
+      ░ ▒░▓  ░  ██▒▒▒   ▒ ░░   ░ ░▒ ▒  ░ ▒ ░░▒░▒  ██▒▒▒ ▒▒ ░ ░▓ ░   ░ ▒░▒░▒░ ▒ ▒▓▒ ▒ ░
+      ░ ░ ▒  ░▓██ ░▒░     ░      ░  ▒    ▒ ░▒░ ░▓██ ░▒░ ░░   ░▒ ░     ░ ▒ ▒░ ░ ░▒  ░ ░
+        ░ ░   ▒ ▒ ░░    ░      ░         ░  ░░ ░▒ ▒ ░░   ░    ░     ░ ░ ░ ▒  ░  ░  ░  
+          ░  ░░ ░              ░ ░       ░  ░  ░░ ░      ░    ░         ░ ░        ░  
+              ░ ░              ░                ░ ░                                   
 
   @project      Litchyx Shell
 
@@ -22,6 +32,7 @@
 int litchyx_cd(char **args);
 int litchyx_help(char **args);
 int litchyx_exit(char **args);
+int litchyx_programs(char **args);
 
 /*
   List of builtin commands, followed by their corresponding functions.
@@ -29,13 +40,15 @@ int litchyx_exit(char **args);
 char *builtin_str[] = {
   "cd",
   "help",
-  "exit"
+  "exit",
+  "programs"
 };
 
 int (*builtin_func[]) (char **) = {
   &litchyx_cd,
   &litchyx_help,
-  &litchyx_exit
+  &litchyx_exit,
+  &litchyx_programs
 };
 
 int litchyx_num_builtins() {
@@ -81,6 +94,11 @@ int litchyx_help(char **args)
 
   printf("Follow us on github! https://aaliyah6022.github.io/Litchyx-OS/.\n");
   return 1;
+}
+
+int litchyx_programs(char **args)
+{
+  printf("./file\n");
 }
 
 /**
