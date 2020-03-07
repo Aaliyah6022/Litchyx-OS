@@ -1,0 +1,22 @@
+Origin: Litchyx
+Label: Litchyx
+Suite: bionic
+Version: 1.0
+Codename: bionic
+Date: Thu, 6 march 2020 17:23:31 UTC
+Architectures: amd64 i386
+Components: main restricted
+Description: Litchyx Bionic 1.0
+Acquire-By-Hash: yes
+MD5Sum:
+ xxxxxxxxxxxxxxx
+ xxxxxxxxxxxxxxx
+ xxxxxxxxxxxxxxx
+SHA1:
+ xxxxxxxxxxxxxxx
+ xxxxxxxxxxxxxxx
+ xxxxxxxxxxxxxxx
+SHA256:
+ xxxxxxxxxxxxxxx
+ xxxxxxxxxxxxxxx
+ xxxxxxxxxxxxxxx
