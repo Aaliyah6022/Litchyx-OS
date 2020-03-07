@@ -1,4 +1,4 @@
-/* LitchyxOS/Include/ACPI/acpi.h */
+/* LitchyxOS/Include/ACPI/acpi_numa.h */
 /**************************************************************************
  *
  * Name: acpi_numa/h
