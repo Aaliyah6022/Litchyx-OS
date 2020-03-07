@@ -157,4 +157,19 @@ typedef u64 acpiSize;
 #ifdef ACPI_DBG_TRACK_ALLOCATIONS
 
 #define ACPI_MEM_PARAMS                        _COMPONENT, _acpi_module_name, __LINE__
+#define ACPI_ALLOCATE(a)                       acpiUtAllocateTrack((acpiSize) (a), ACPI_MEM_PARAMS)
+#define ACPI_ALLOCATE_ZEROED(a)                acpiUtAllocateZeroeTrack((acpiSize) (a), ACPI_MEM_PARAMS)
+#define ACPI_FREE(a)                           acpiUtFreeTrack(a, ACPI_MEM_PARAMS)
+#define ACPI_MEM_TRACK(a)                      a
+
+#else
+
+#define ACPI_ALLOCATE(a)                       acpiOSAllocate((acpiSize) (a))
+#define ACPI_ALLOCATE_ZEROED(a)                acpiOSAllocateZeroed((acpiSize) (a))
+#define ACPI_FREE(a)                           acpiOSFree(a)
+#define ACPI_MEM_TRACK(a)
+
+#endif
+
+#endif
 
