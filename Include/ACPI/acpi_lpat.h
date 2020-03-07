@@ -1,4 +1,4 @@
-/* LitchyxOS/Include/ACPI/acpi.h */
+/* LitchyxOS/Include/ACPI/acpi_lpat.h */
 /**************************************************************************
  *
  * Name: acpi_lpat.h - LPAT table process functions
