@@ -277,5 +277,25 @@
             return; \
         })
 
+#define RETURN_ACPI_STATUS(status) \
+        ACPI_TRACE_EXIT(acpi_ut_status_exit, acpi_status, status)
+
+#define RETURN_PTR(pointer) \
+        ACPI_TRACE_EXIT(acpi_ut_ptr_exit, void *, pointer)
+
+#define RETURN_STR(string) \
+        ACPI_TRACE_EXIT(acpi_ut_str_exit, const char *, string)
+
+#define RETURN_VALUE(value) \
+        ACPI_TRACE_EXIT(acpi_ut_value_exit, u64, value)
+
+#define RETURN_UINT32(value) \
+        ACPI_TRACE_EXIT(acpi_ut_value_exit, u32, value)
+
+#define RETURN_UINT8(value) \
+        ACPI_TRACE_EXIT(acpi_ut_value_exit, u8, value)
+
+// Conditional executions
+
 #endif
 
