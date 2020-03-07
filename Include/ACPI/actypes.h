@@ -383,3 +383,202 @@ typedef u64 acpiInteger;
 #define ACPI_GENERIC_NOTIFY_MAX         0x0F
 #define ACPI_SPECIFIC_NOTIFY_MAX        0x84
 
+// Types associated with ACPI names and objs
+
+typedef u32 acpi_object_type;
+
+#define ACPI_TYPE_ANY                   0x00
+#define ACPI_TYPE_INTEGER               0x01
+#define ACPI_TYPE_STRING                0x02
+#define ACPI_TYPE_BUFFER                0x03
+#define ACPI_TYPE_PACKAGE               0x04
+#define ACPI_TYPE_FIELD_UNIT            0x05
+#define ACPI_TYPE_DEVICE                0x06
+#define ACPI_TYPE_EVENT                 0x07
+#define ACPI_TYPE_METHOD                0x08
+#define ACPI_TYPE_MUTEX                 0x09
+#define ACPI_TYPE_REGION                0x0A
+#define ACPI_TYPE_POWER                 0x0B
+#define ACPI_TYPE_PROCESSOR             0x0C
+#define ACPI_TYPE_THERMAL               0x0D
+#define ACPI_TYPE_BUFFER_FIELD          0x0E
+#define ACPI_TYPE_DDB_HANDLE            0x0F
+#define ACPI_TYPE_DEBUG_OBJECT          0x10
+
+#define ACPI_TYPE_EXTERNAL_MAX          0x10
+#define ACPI_NUM_TYPES                  (ACPI_TYPE_EXTERNAL_MAX + 1)
+
+// These are obj types that to not map directly to the acpi object_type().
+
+#define ACPI_TYPE_LOCAL_REGION_FIELD    0x11
+#define ACPI_TYPE_LOCAL_BANK_FIELD      0x12
+#define ACPI_TYPE_LOCAL_INDEX_FIELD     0x13
+#define ACPI_TYPE_LOCAL_REFERENCE       0x14
+#define ACPI_TYPE_LOCAL_ALIAS           0x15
+#define ACPI_TYPE_LOCAL_METHOD_ALIAS    0x16
+#define ACPI_TYPE_LOCAL_NOTIFY          0x17
+#define ACPI_TYPE_LOCAL_ADDRESS_HANDLER 0x18
+#define ACPI_TYPE_LOCAL_RESOURCE        0x19
+#define ACPI_TYPE_LOCAL_RESOURCE_FIELD  0x1A
+#define ACPI_TYPE_LOCAL_SCOPE           0x1B
+
+#define ACPI_TYPE_NS_NODE_MAX           0x1B
+#define ACPI_TOTAL_TYPES                (ACPI_TYPE_NS_NODE_MAX + 1)
+
+// Special object types,
+
+#define ACPI_TYPE_LOCAL_EXTRA           0x1C
+#define ACPI_TYPE_LOCAL_DATA            0x1D
+
+#define ACPI_TYPE_LOCAL_MAX             0x1D
+
+// All types above here are invalid.
+
+#define ACPI_TYPE_INVALID               0x1E
+#define ACPI_TYPE_NOT_FOUND             0xFF
+
+#define ACPI_NUM_NS_TYPES               (ACPI_TYPE_INVALID + 1)
+
+// IOs
+
+#define ACPI_READ                       0
+#define ACPI_WRITE                      1
+#define ACPI_IO_MASK                    1
+
+// Event types
+
+typedef u32 acpiEventType;
+
+// Fixed events
+
+#define ACPI_EVENT_PMTIMER              0
+#define ACPI_EVENT_GLOBAL               1
+#define ACPI_EVENT_POWER_BUTTON         2
+#define ACPI_EVENT_SLEEP_BUTTON         3
+#define ACPI_EVENT_RTC                  4
+#define ACPI_EVENT_MAX                  4
+#define ACPI_NUM_FIXED_EVENTS           ACPI_EVENT_MAX + 1
+
+// Event status
+
+typedef u32 acpiEventStatus;
+
+#define ACPI_EVENT_FLAG_DISABLED        (acpi_event_status) 0x00
+#define ACPI_EVENT_FLAG_ENABLED         (acpi_event_status) 0x01
+#define ACPI_EVENT_FLAG_WAKE_ENABLED    (acpi_event_status) 0x02
+#define ACPI_EVENT_FLAG_STATUS_SET      (acpi_event_status) 0x04
+#define ACPI_EVENT_FLAG_ENABLE_SET      (acpi_event_status) 0x08
+#define ACPI_EVENT_FLAG_HAS_HANDLER     (acpi_event_status) 0x10
+#define ACPI_EVENT_FLAG_MASKED          (acpi_event_status) 0x20
+#define ACPI_EVENT_FLAG_SET             ACPI_EVENT_FLAG_STATUS_SET
+
+// Actions for setgpe, gpewakeup and hwlowsetgpe.
+
+#define ACPI_GPE_ENABLE                 0
+#define ACPI_GPE_DISABLE                1
+#define ACPI_GPE_CONDITIONAL_ENABLE     2
+
+// GPE into flags!
+
+#define ACPI_GPE_DISPATCH_NONE          (u8) 0x00
+#define ACPI_GPE_DISPATCH_METHOD        (u8) 0x01
+#define ACPI_GPE_DISPATCH_HANDLER       (u8) 0x02
+#define ACPI_GPE_DISPATCH_NOTIFY        (u8) 0x03
+#define ACPI_GPE_DISPATCH_RAW_HANDLER   (u8) 0x04
+#define ACPI_GPE_DISPATCH_MASK          (u8) 0x07
+#define ACPI_GPE_DISPATCH_TYPE(flags)   ((u8) ((flags) & ACPI_GPE_DISPATCH_MASK))
+
+#define ACPI_GPE_LEVEL_TRIGGERED        (u8) 0x08
+#define ACPI_GPE_EDGE_TRIGGERED         (u8) 0x00
+#define ACPI_GPE_XRUPT_TYPE_MASK        (u8) 0x08
+
+#define ACPI_GPE_CAN_WAKE               (u8) 0x10
+#define ACPI_GPE_AUTO_ENABLED           (u8) 0x20
+#define ACPI_GPE_INITIALIZED            (u8) 0x40
+
+// Flags for GPE and lock interfaces
+
+#define ACPI_NOT_ISR                    0x1
+#define ACPI_ISR                        0x0
+
+// Notification types
+
+#define ACPI_SYSTEM_NOTIFY              0x1
+#define ACPI_DEVICE_NOTIFY              0x2
+#define ACPI_ALL_NOTIFY                 (ACPI_SYSTEM_NOTIFY | ACPI_DEVICE_NOTIFY)
+#define ACPI_MAX_NOTIFY_HANDLER_TYPE    0x3
+#define ACPI_NUM_NOTIFY_TYPES           2
+
+#define ACPI_MAX_SYS_NOTIFY             0x7F
+#define ACPI_MAX_DEVICE_SPECIFIC_NOTIFY 0xBF
+
+#define ACPI_SYSTEM_HANDLER_LIST        0
+#define ACPI_DEVICE_HANDLER_LIST        1
+
+// Address space types(op region)
+
+typedef u8 acpiAdrSpaceType;
+
+#define ACPI_ADR_SPACE_SYSTEM_MEMORY    (acpi_adr_space_type) 0
+#define ACPI_ADR_SPACE_SYSTEM_IO        (acpi_adr_space_type) 1
+#define ACPI_ADR_SPACE_PCI_CONFIG       (acpi_adr_space_type) 2
+#define ACPI_ADR_SPACE_EC               (acpi_adr_space_type) 3
+#define ACPI_ADR_SPACE_SMBUS            (acpi_adr_space_type) 4
+#define ACPI_ADR_SPACE_CMOS             (acpi_adr_space_type) 5
+#define ACPI_ADR_SPACE_PCI_BAR_TARGET   (acpi_adr_space_type) 6
+#define ACPI_ADR_SPACE_IPMI             (acpi_adr_space_type) 7
+#define ACPI_ADR_SPACE_GPIO             (acpi_adr_space_type) 8
+#define ACPI_ADR_SPACE_GSBUS            (acpi_adr_space_type) 9
+#define ACPI_ADR_SPACE_PLATFORM_COMM    (acpi_adr_space_type) 10
+
+#define ACPI_NUM_PREDEFINED_REGIONS     11
+
+// Special address spaces
+
+#define ACPI_ADR_SPACE_DATA_TABLE       (acpi_adr_space_type) 0x7E	/* Internal to ACPICA only */
+#define ACPI_ADR_SPACE_FIXED_HARDWARE   (acpi_adr_space_type) 0x7F
+
+// PM1 status register
+
+#define ACPI_BITREG_TIMER_STATUS                0x00
+#define ACPI_BITREG_BUS_MASTER_STATUS           0x01
+#define ACPI_BITREG_GLOBAL_LOCK_STATUS          0x02
+#define ACPI_BITREG_POWER_BUTTON_STATUS         0x03
+#define ACPI_BITREG_SLEEP_BUTTON_STATUS         0x04
+#define ACPI_BITREG_RT_CLOCK_STATUS             0x05
+#define ACPI_BITREG_WAKE_STATUS                 0x06
+#define ACPI_BITREG_PCIEXP_WAKE_STATUS          0x07
+
+// PM1 enable register
+
+#define ACPI_BITREG_TIMER_ENABLE                0x08
+#define ACPI_BITREG_GLOBAL_LOCK_ENABLE          0x09
+#define ACPI_BITREG_POWER_BUTTON_ENABLE         0x0A
+#define ACPI_BITREG_SLEEP_BUTTON_ENABLE         0x0B
+#define ACPI_BITREG_RT_CLOCK_ENABLE             0x0C
+#define ACPI_BITREG_PCIEXP_WAKE_DISABLE         0x0D
+
+// PM1 control register
+
+#define ACPI_BITREG_SCI_ENABLE                  0x0E
+#define ACPI_BITREG_BUS_MASTER_RLD              0x0F
+#define ACPI_BITREG_GLOBAL_LOCK_RELEASE         0x10
+#define ACPI_BITREG_SLEEP_TYPE                  0x11
+#define ACPI_BITREG_SLEEP_ENABLE                0x12
+
+// PM2 control register
+
+#define ACPI_BITREG_ARB_DISABLE                 0x13
+
+#define ACPI_BITREG_MAX                         0x13
+#define ACPI_NUM_BITREG                         ACPI_BITREG_MAX + 1
+
+// Status register values
+
+#define ACPI_CLEAR_STATUS                       1
+
+// Enabling and control register values...
+
+#define ACPI_ENABLE_EVENT                       1
+#define ACPI_DISABLE_EVENT                      0
+
