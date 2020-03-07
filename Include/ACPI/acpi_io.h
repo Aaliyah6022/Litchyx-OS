@@ -1,4 +1,4 @@
-/* LitchyxOS/Include/ACPI/acpi.h */
+/* LitchyxOS/Include/ACPI/acpi_io.h */
 /**************************************************************************
  *
  * Name: acpi_io.h
