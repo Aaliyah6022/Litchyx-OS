@@ -196,10 +196,37 @@
 #define ACPI_IS_DBG_ENABLED(level, component) \
         ((level & acpi_debug_level) && (component & acpi_debug_layer))
 
-#ifdef ACPI_USE_DOWHILE0        
+#ifdef ACPI_USE_DOWHILE0
 #define ACPI_DOWHILE0(a)
 #else
 #define ACPI_DOWHILE0(a)         a
+#endif
+
+#ifndef COMPILER_VA_MACRO
+#define ACPI_DBG_PRINT(plist)    acpi_debug_print(plist)
+#define ACPI_DBG_PRINTRAW(plist) acpi_debug_printraw(plist)
+
+#else
+
+#define ACPI_DO_DBG_PRINT(func, lvl, line, filename, modulename, component, ...) \
+        ACPI_DOWHILE0 ({ \
+            if (ACPI_IS_DBG_ENABLED (lvl, component)) \
+            { \
+                function (lvl, line, filename, modulename, component, __VA_ARGS__); \
+            } \
+        })
+
+#define ACPI_ACTUAL_DBG (lvl, line, filename, modulename, component, ...) \
+        ACPI_DO_DBG_PRINT (acpi_debug_print, lvl, line,  \
+                filename, modulename, component, __VA_ARGS__)
+
+#define ACPI_ACTUAL_DBG_RAW (lvl, line, filename, modulename, component, ...) \
+        ACPI_DO_DBG_PRINTRAW (acpi_debug_printraw, lvl, line \
+                filename, modulename, component, __VA_ARGS__)
+
+#define ACPI_DBG_PRINT(plist)    ACPI_ACTUAL_DBG plist
+#define APCI_DBG_PRINTRAW(plist) ACPI_ACTUAL_DBG_RAW plist
+
 #endif
 
 #endif
