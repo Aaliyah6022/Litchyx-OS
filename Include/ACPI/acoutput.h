@@ -229,5 +229,53 @@
 
 #endif
 
+#define ACPI_TRACE_ENTRY(name, function, type, param) \
+        ACPI_FUNCTION_NAME(name) \
+        function (ACPI_DBG_PARAMS, (type) param)
+
+// Actual entry trace macros
+#define ACPI_FUNC_TRACE(name) \
+        ACPI_FUNCTION_NAME(name) \
+        acpi_ut_trace (ACPI_DEBUG_PARAMS)
+
+#define ACPI_FUNC_TRACE_PTR (name, pointer) \
+        ACPI_TRACE_ENTRY (name, acpi_ut_trace_ptr, void *, pointer)
+
+#define ACPI_FUNC_TRACE_U32 (name, value) \
+        ACPI_TRACE_ENTRY (name, acpi_ut_trace_u32, value) \
+
+#define ACPI_FUNC_TRACE_STR (name, string) \
+        ACPI_TRACE_ENTRY (name, acpi_ut_trace_str, const char *, string)
+
+#define ACPI_FUNC_ENTRY() \
+        acpi_ut_track_ptr()
+
+// Function exit tracing
+#ifndef ACPI_SIMPLE_RETURN_MACROS
+
+#define ACPI_TRACE_EXIT(function, type, param) \
+        ACPI_DOWHILE0 ({ \
+            register type _param = (type) (param); \
+            function (ACPI_DEBUG_PARAMS, _param); \
+            return (_param); \
+        })
+#else
+
+#define ACPI_TRACE_EXIT(function, type, param) \
+        ACPI_DOWHILE0 ({ \
+            register type _param = (type) (param); \
+            function (ACPI_DEBUG_PARAMS, _param); \
+            return (_param); \
+        })
+#endif
+
+// Exit macros
+
+#define RETURN_VOID \
+        ACPI_DOWHILE0 ({ \
+            acpi_ut_exit (ACPI_DEBUG_PARAMS); \
+            return; \
+        })
+
 #endif
 
