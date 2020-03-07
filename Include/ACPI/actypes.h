@@ -582,3 +582,50 @@ typedef u8 acpiAdrSpaceType;
 #define ACPI_ENABLE_EVENT                       1
 #define ACPI_DISABLE_EVENT                      0
 
+/* External ACPI object definitions */
+
+union acpiObj {
+	acpiObjType type;
+	struct {
+		acpiObjType type;
+		u64 value;
+	} integer;
+
+	struct {
+		acpiObjType type;
+		u32 length;
+		char *pointer;
+	} string;
+
+	struct {
+		acpiObjType type;
+		u32 length;
+		u8 *pointer;
+	} buffer;
+
+	struct {
+		acpiObjType type;
+		u32 count;
+		union acpiObj *elements;
+	} package;
+
+	struct {
+		acpiObjType type;
+	    acpiObjType actual_type;
+		acpiHandle handle;
+	} reference;
+
+	struct {
+		acpiObjType type;
+		u32 proc_id;
+		acpiIOAddress pblk_address;
+		u32 pblk_length;
+	} processor;
+
+	struct {
+		acpiObjType type;
+		u32 systemLvl;
+		u32 resourceOrder;
+	} powerResource;
+};
+
