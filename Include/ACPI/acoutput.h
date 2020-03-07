@@ -41,7 +41,7 @@
 #define ACPI_LV_DEBUG_OBJ       0x00000002
 #define ACPI_LV_INFO            0x00000004
 #define ACPI_LV_REPAIR          0x00000008
-#define ACPI_LV_TRACE_POINT     0x00000010
+#define ACPI_LV_TRACEPOINT      0x00000010
 #define ACPI_LV_ALL_EXCEPTS     0x0000001F
 
 // Trace verbosity Level 1 [Standard Trace Level]
@@ -131,6 +131,76 @@
 
 #define ACPI_NORMAL_DEFAULT     (ACPI_LV_INIT | ACPI_LV_DEBUG_OBJ | ACPI_LV_REPAIR)
 #define ACPI_DEBUG_ALL          (ACPI_LV_AML_DISASSEMBLE | ACPI_LV_ALL_EXCEPTS | ACPI_LV_ALL)
+
+// Global trace flags
+#define ACPI_TRACE_ENABLED      ((u32) 4)
+#define ACPI_TRACE_1SHOT        ((u32) 2)
+#define ACPI_TRACE_OP_CODE      ((u32) 1)
+
+// Default values for trace debugging level/layer
+#define ACPI_TRACE_LVL_ALL      ACPI_LV_ALL
+#define ACPI_TRACE_LAYER_ALL    0x000001FF
+#define ACPI_TRACE_LVL_DEFAULT  ACPI_LV_TRACEPOINT
+#define ACPI_TRACE_LAYER_ALL    ACPI_EXECUTOR
+
+#if defined (ACPI_DEBUG_OUTPUT) || !defined (ACPI_NO_ERR_MSG)
+
+#define ACPI_MODULE_NAME(name)  static const char ACPI_UNUSED_VAR _acpi_module_name[] = name;
+#else
+
+#define ACPI_MODULE_NAME(name)
+#define _acpi_module_name ""
+#endif
+
+// ASCII error messages can be configured out.
+
+#ifndef ACPI_NO_ERR_MSG
+#define _INFO                   _acpi_module_name, __LINE__
+
+// An error occurred. Below are the error reports.
+#define ACPI_INFO(plist)        acpi_info(plist)
+#define ACPI_WARNING(plist)     acpi_warning(plist)
+#define ACPI_EXCEPT(plist)      acpi_exception(plist)
+#define ACPI_ERROR(plist)       acpi_error(plist)
+#define ACPI_BIOS_WARN(plist)   acpi_bios_warning(plist)
+#define ACPI_BIOS_EXCEPT(plist) acpi_bios_exception(plist)
+#define ACPI_BIOS_ERR(plist)    acpi_bios_error(plist)
+#define ACPI_DBG_OBJ(obj, l, i) acpi_debug_object(obj, l, i)
+
+#else // No errors ocurred.
+#define ACPI_INFO(plist)
+#define ACPI_WARNING(plist)
+#define ACPI_EXCEPT(plist)
+#define ACPI_ERROR(plist)
+#define ACPI_BIOS_WARN(plist)
+#define ACPI_BIOS_EXCEPT(plist)
+#define ACPI_BIOS_ERR(plist)
+#define ACPI_DBG_OBJ(obj, l, i)
+
+// debug marcos that are conditionally compiled
+#ifdef ACPI_DEBUG_OUTPUT
+
+#ifndef ACPI_GET_FUNCTION_NAME
+#define ACPI_GET_FUNCTIONL_NAME _acpi_function_name
+
+#define ACPI_FUNCTION_NAME(name) static const char _acpi_function_name[] = #name;
+
+#else
+
+#define ACPI_FUNCTION_NAME(name)
+#endif
+
+#define ACPI_DEBUG_PARAMS \
+        __LINE__, ACPI_GET_FUNCTION_NAME, _acpi_module_name, _COMPONENT
+
+#define ACPI_IS_DBG_ENABLED(level, component) \
+        ((level & acpi_debug_level) && (component & acpi_debug_layer))
+
+#ifdef ACPI_USE_DOWHILE0        
+#define ACPI_DOWHILE0(a)
+#else
+#define ACPI_DOWHILE0(a)         a
+#endif
 
 #endif
 
